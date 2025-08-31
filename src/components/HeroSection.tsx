@@ -7,11 +7,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useRef, useState } from "react";
 import { useFrameLoop } from "@/utils/animation";
 import { downloadResume } from "@/utils/resume";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const ref = useScrollReveal();
   const isMobile = useIsMobile();
   const [isLandscape, setIsLandscape] = useState(false);
+  const navigate = useNavigate();
   
   // Mobile-optimized role animations with enhanced responsiveness
   const roles = ["Future Data Scientist", "AI/ML Expert", "Cloud Enthusiast"];
@@ -144,25 +146,25 @@ const HeroSection = () => {
               text-fluid-xl sm:text-fluid-2xl md:text-fluid-3xl
               font-light leading-tight
               text-secondary
-              mb-3
+              mb-1
               will-change-transform
             ">
               Hello, I'm{" "}
-              <span className="gradient-text font-bold inline-block text-fluid-2xl sm:text-fluid-3xl md:text-fluid-4xl will-change-transform">
+              <span className="font-bold inline-block text-fluid-2xl sm:text-fluid-3xl md:text-fluid-4xl will-change-transform">
                 Nishant Kumar
               </span>
             </h1>
           </div>
           
           {/* Mobile-Optimized Animated Tagline with Enhanced Fluid Heights */}
-          <div className="flex flex-col items-center justify-center text-center min-h-[180px] sm:min-h-[200px] md:min-h-[140px]" id="hero-tagline">
+          <div className="flex flex-col items-center justify-center text-center min-h-[120px] sm:min-h-[140px] md:min-h-[100px]" id="hero-tagline">
             <h2 className="
               text-fluid-3xl sm:text-fluid-4xl md:text-fluid-5xl
               font-bold leading-tight
-              mb-4
+              mb-2
               will-change-transform
             ">
-              <span className="gradient-text inline-block min-h-[1.2em] break-words px-2 will-change-transform">
+              <span className="inline-block min-h-[1.2em] break-words px-2 will-change-transform">
                 {currentText}
                 <span className="animate-pulse opacity-75">|</span>
               </span>

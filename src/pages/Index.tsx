@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Navigation from "@/components/Navigation";
+import { PillNav } from "@/components";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import SkillsSection from "@/components/SkillsSection";
@@ -8,14 +8,29 @@ import ProjectsSection from "@/components/ProjectsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-
+import logo from "@/assets/logo.svg";
 
 const Index = () => {
   const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
+  const navItems = [
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Certifications', href: '#certifications' },
+    { label: 'Contact', href: '#contact' }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
+      <PillNav 
+        logo={logo}
+        logoAlt="Nishant Kumar Logo"
+        items={navItems}
+        activeHref="#home"
+      />
       <main>
         <section id="home" ref={el => sectionRefs.current['home'] = el}>
           <HeroSection />

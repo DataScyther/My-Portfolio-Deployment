@@ -140,8 +140,8 @@ const ProjectsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
+            Featured <span>Projects</span>
           </h2>
           <p className="text-xl text-secondary max-w-3xl mx-auto">
             A showcase of innovative solutions spanning data science, machine learning, and creative technology

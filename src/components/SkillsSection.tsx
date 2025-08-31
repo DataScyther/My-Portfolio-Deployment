@@ -4,6 +4,8 @@ import { Code, Database, Cloud, BarChart3, Brain, GitBranch } from "lucide-react
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useIsMobile } from "@/hooks/use-mobile";
 import styles from "./SkillsSection.module.css";
+import LogoLoop from "./LogoLoop";
+import { SiPython, SiJavascript, SiReact, SiGooglecloud, SiAmazonwebservices, SiDocker, SiVercel, SiGithub, SiTypescript, SiNextdotjs, SiOpenai } from "react-icons/si";
 
 const SkillsSection = () => {
   const isMobile = useIsMobile();
@@ -93,13 +95,46 @@ const SkillsSection = () => {
     }
   };
 
+  // Technology logos for the carousel
+  const techLogos = [
+    { node: <SiPython size={60} />, title: "Python", href: "https://python.org" },
+    { node: <SiJavascript size={60} />, title: "JavaScript", href: "https://javascript.com" },
+    { node: <SiReact size={60} />, title: "React", href: "https://react.dev" },
+    { node: <SiAmazonwebservices size={60} />, title: "AWS", href: "https://aws.amazon.com" },
+    { node: <SiGooglecloud size={60} />, title: "GCP", href: "https://cloud.google.com" },
+    // Custom SVG for Azure since it's not available in react-icons/si
+    { 
+      node: (
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.25 3.25L13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M18.75 13.25L18.75 18.75L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M13.25 18.75L8.75 18.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8.75 13.25L8.75 8.75L13.25 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8.75 13.25L13.25 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M13.25 13.25L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M18.75 8.75L18.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8.75 8.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ), 
+      title: "Azure", 
+      href: "https://azure.microsoft.com" 
+    },
+    { node: <SiDocker size={60} />, title: "Docker", href: "https://docker.com" },
+    { node: <SiVercel size={60} />, title: "Vercel", href: "https://vercel.com" },
+    { node: <SiGithub size={60} />, title: "GitHub", href: "https://github.com" },
+    { node: <SiTypescript size={60} />, title: "TypeScript", href: "https://typescriptlang.org" },
+    { node: <SiNextdotjs size={60} />, title: "Next.js", href: "https://nextjs.org" },
+    { node: <SiOpenai size={60} />, title: "Machine Learning", href: "https://openai.com" },
+  ];
+
   return (
     <section id="skills" ref={ref} className="py-16 sm:py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Technical <span className="gradient-text">Skills</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
+            Technical <span>Skills</span>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
             A comprehensive toolkit for building intelligent solutions and data-driven applications
@@ -140,7 +175,7 @@ const SkillsSection = () => {
         {/* Proficiency Bars - Enhanced Mobile Layout */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
-            Core <span className="gradient-text">Proficiencies</span>
+            Core <span>Proficiencies</span>
           </h3>
           
           <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
@@ -162,6 +197,28 @@ const SkillsSection = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Technology Stack Carousel */}
+        <div className="mt-12 sm:mt-16">
+          <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
+            Technology <span>Stack</span>
+          </h3>
+          <div className="h-24 flex items-center">
+            <LogoLoop
+              logos={techLogos}
+              speed={100}
+              direction="left"
+              logoHeight={60}
+              gap={60}
+              pauseOnHover
+              fadeOut
+              scaleOnHover
+              fadeOutColor="var(--background)"
+              ariaLabel="Technology stack"
+              className="w-full"
+            />
           </div>
         </div>
       </div>

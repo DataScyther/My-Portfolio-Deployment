@@ -61,12 +61,14 @@ src/
 
 ## 🌐 Live Demo
 
-Visit the live portfolio: [Deployed on Vercel](https://your-vercel-url.vercel.app)
+Visit the live portfolio: [Deployed on Vercel]
 
 ## 📧 Contact
 
 - **YouTube**: [Mighty-TechShorts](https://www.youtube.com/@Mighty-TechShorts)
 - **Email**: Contact via portfolio form
+- **LinkedIn**: [Nishant Kumar](https://www.linkedin.com/in/nishant-kumar-b0b0b0195/)
+- **GitHub**: [Nishant-Kumar-07](https://github.com/Nishant-Kumar-07)\
 
 ---
 

@@ -49,7 +49,7 @@ const Footer = () => {
         <div className="grid gap-8 sm:gap-6 md:grid-cols-3">
           {/* Brand Section - Enhanced Mobile Layout */}
           <div className="text-center md:text-left">
-            <div className="text-xl sm:text-2xl font-bold gradient-text mb-4">Nishant Kumar</div>
+            <div className="text-xl sm:text-2xl font-bold mb-4">Nishant Kumar</div>
             <p className="text-secondary mb-4 leading-relaxed text-sm sm:text-base px-2 md:px-0">
               Future Data Scientist passionate about AI/ML, cloud computing, and creating 
               educational content to help others learn and grow in technology.

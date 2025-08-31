@@ -203,11 +203,11 @@ const Navigation = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
-          <div className="flex items-end justify-between h-11 sm:h-12 md:h-16">
+          <div className="flex items-center justify-between h-11 sm:h-12 md:h-16">
             {/* Logo - Perfect Bottom Baseline Alignment */}
             <a
               href="#"
-              className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 flex items-end pb-2 leading-none"
+              className="text-xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 flex items-center pb-2 leading-none"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               NK
@@ -258,7 +258,7 @@ const Navigation = () => {
             <button
               onClick={toggleMenu}
               disabled={isMobileMenuAnimating}
-              className="lg:hidden w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-end justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50 mb-2"
+              className="lg:hidden w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
             >
@@ -271,17 +271,17 @@ const Navigation = () => {
           {/* Mobile Navigation - Compact and Efficient */}
           <div className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${
             isOpen 
-              ? 'opacity-100 translate-y-1 pointer-events-auto' 
-              : 'opacity-0 -translate-y-2 pointer-events-none'
+              ? 'opacity-100 pointer-events-auto' 
+              : 'opacity-0 pointer-events-none'
           }`}>
-            <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1 will-change-transform">
+            <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1">
               <div className="px-3 py-4 space-y-1">
                 {navItems.map((item, index) => (
                   <button
                     key={item.label}
                     onClick={() => scrollToSection(item.href)}
                     data-nav-link={item.href}
-                    className="block w-full text-left text-secondary hover:text-foreground py-3 px-4 hover:bg-muted/20 active:bg-muted/30 transition-all duration-200 nav-link touch-manipulation will-change-transform rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-[0.98]"
+                    className="block w-full text-left text-secondary hover:text-foreground py-3 px-4 hover:bg-muted/20 active:bg-muted/30 transition-all duration-200 nav-link rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-[0.98]"
                     style={{ 
                       animationDelay: `${index * 50}ms`,
                       transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',

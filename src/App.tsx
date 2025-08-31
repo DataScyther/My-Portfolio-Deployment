@@ -9,6 +9,7 @@ import { initPerformanceOptimizations } from "./utils/performance";
 import "./utils/mobileDebug"; // Import mobile debugging utilities
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import TestPage from "./pages/TestPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/test" element={<TestPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

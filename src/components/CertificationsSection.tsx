@@ -225,8 +225,8 @@ const CertificationsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Certifications</span> & Achievements
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
+            <span>Certifications</span> & Achievements
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Continuous learning and professional development in cutting-edge technologies
