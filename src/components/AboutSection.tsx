@@ -36,17 +36,12 @@ const AboutSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
-            About <span>Me</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            About <span className="gradient-text">Me</span>
           </h2>
-          
-          <div className="prose prose-lg max-w-none text-secondary mb-8 sm:mb-12 leading-relaxed">
-            <p className="mb-4">
-              I'm a passionate <span className="font-semibold">Data Scientist</span> and <span className="font-semibold">AI/ML Engineer</span> with expertise in building intelligent solutions. 
-              As the creator of <span className="font-semibold"> Mighty-TechShorts</span>, where I create
-              engaging technical content, I combine my love for technology with effective communication.
-            </p>
-          </div>
+          <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
+            Passionate about transforming data into innovation and creating content that educates the tech community
+          </p>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -68,7 +63,7 @@ const AboutSection = () => {
                 
                 <p className="text-sm sm:text-base">
                   For the past 3+ years, I've been sharing my knowledge through my YouTube channel 
-                <span className="font-semibold"> Mighty-TechShorts</span>, where I create
+                <span className="gradient-text font-semibold"> Mighty-TechShorts</span>, where I create
                   educational content about emerging technologies, helping thousands of learners understand 
                   complex concepts in simple terms.
                 </p>
@@ -85,7 +80,7 @@ const AboutSection = () => {
           {/* Timeline - Enhanced Mobile Experience */}
           <div className="slide-in-right" style={{ animationDelay: '400ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center lg:text-left">
-              Career & Education <span>Timeline</span>
+              Career & Education <span className="gradient-text">Timeline</span>
             </h3>
             
             <div className="space-y-6">

@@ -87,8 +87,8 @@ const ExperienceSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
-            Professional <span>Experience</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            Professional <span className="gradient-text">Experience</span>
           </h2>
           <p className="text-xl text-secondary max-w-3xl mx-auto">
             Building expertise through diverse experiences in data science, analytics, and technology education
@@ -111,7 +111,7 @@ const ExperienceSection = () => {
                     <h3 className="text-xl font-semibold">{exp.company}</h3>
                   </div>
                   
-                  <h4 className="text-lg font-medium mb-3">{exp.title}</h4>
+                  <h4 className="text-lg font-medium gradient-text mb-3">{exp.title}</h4>
                   
                   <div className="space-y-2 text-sm text-secondary">
                     <div className="flex items-center">

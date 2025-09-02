@@ -133,8 +133,8 @@ const SkillsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
-            Technical <span>Skills</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            Technical <span className="gradient-text">Skills</span>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
             A comprehensive toolkit for building intelligent solutions and data-driven applications
@@ -175,7 +175,7 @@ const SkillsSection = () => {
         {/* Proficiency Bars - Enhanced Mobile Layout */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
-            Core <span>Proficiencies</span>
+            Core <span className="gradient-text">Proficiencies</span>
           </h3>
           
           <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
@@ -203,7 +203,7 @@ const SkillsSection = () => {
         {/* Technology Stack Carousel */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
-            Technology <span>Stack</span>
+            Technology <span className="gradient-text">Stack</span>
           </h3>
           <div className="h-24 flex items-center">
             <LogoLoop

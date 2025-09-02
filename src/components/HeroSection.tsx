@@ -2,18 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
 import { useTypingAnimation } from "@/hooks/useTypingAnimation";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { useMagneticHover } from "@/hooks/useInteractiveEffects";
+import { useGlobalMagneticHover } from "@/hooks/useInteractiveEffects";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useRef, useState } from "react";
 import { useFrameLoop } from "@/utils/animation";
 import { downloadResume } from "@/utils/resume";
-import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const ref = useScrollReveal();
   const isMobile = useIsMobile();
   const [isLandscape, setIsLandscape] = useState(false);
-  const navigate = useNavigate();
   
   // Mobile-optimized role animations with enhanced responsiveness
   const roles = ["Future Data Scientist", "AI/ML Expert", "Cloud Enthusiast"];
@@ -71,8 +69,8 @@ const HeroSection = () => {
     }
   }, []);
 
-  // Perfectly balanced magnetic hover effect with medium-speed responsiveness
-  useMagneticHover('.gradient-button', { 
+  // Global magnetic hover effect for all gradient buttons
+  useGlobalMagneticHover({ 
     maxTranslatePx: isMobile ? 6 : 15,        // Perfect translation range
     intensity: isMobile ? 1.2 : 2.0,         // Enhanced magnetic pull strength
     damping: isMobile ? 0.15 : 0.08,         // Medium-speed balanced damping
@@ -81,10 +79,7 @@ const HeroSection = () => {
   });
 
   return (
-    <section 
-      id="hero"
-      ref={ref} 
-      className={`
+    <section id="hero" ref={ref} className={`
         relative px-4 scroll-reveal overflow-hidden
         ${isLandscape 
           ? 'pt-14 pb-8' // Landscape: reduced top padding for tight spacing
@@ -102,16 +97,8 @@ const HeroSection = () => {
       {/* Conditional gradient orbs - simplified on mobile */}
       {!isMobile && (
         <>
-          <div 
-            ref={el => parallaxRefs.current[0] = el}
-            data-parallax-speed="0.05"
-            className="fixed top-1/4 left-1/4 w-64 h-64 bg-gradient-purple/20 rounded-full blur-3xl animate-pulse -z-10" 
-          />
-          <div 
-            ref={el => parallaxRefs.current[1] = el}
-            data-parallax-speed="0.1"
-            className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-gradient-pink/20 rounded-full blur-3xl animate-pulse delay-1000 -z-10" 
-          />
+          <div ref={el => parallaxRefs.current[0] = el} data-parallax-speed="0.05" className="fixed top-1/4 left-1/4 w-64 h-64 bg-gradient-purple/20 rounded-full blur-3xl animate-pulse -z-10" />
+          <div ref={el => parallaxRefs.current[1] = el} data-parallax-speed="0.1" className="fixed bottom-1/4 right-1/4 w-96 h-96 bg-gradient-pink/20 rounded-full blur-3xl animate-pulse delay-1000 -z-10" />
         </>
       )}
       
@@ -145,81 +132,80 @@ const HeroSection = () => {
             <h1 className="
               text-fluid-xl sm:text-fluid-2xl md:text-fluid-3xl
               font-light leading-tight
-              text-secondary
-              mb-1
+              mb-3
               will-change-transform
             ">
               Hello, I'm{" "}
-              <span className="font-bold inline-block text-fluid-2xl sm:text-fluid-3xl md:text-fluid-4xl will-change-transform">
+              <span className="gradient-text-warm font-bold inline-block text-fluid-2xl sm:text-fluid-3xl md:text-fluid-4xl will-change-transform">
                 Nishant Kumar
               </span>
             </h1>
           </div>
           
           {/* Mobile-Optimized Animated Tagline with Enhanced Fluid Heights */}
-          <div className="flex flex-col items-center justify-center text-center min-h-[120px] sm:min-h-[140px] md:min-h-[100px]" id="hero-tagline">
+          <div className="flex flex-col items-center justify-center text-center min-h-[180px] sm:min-h-[200px] md:min-h-[140px]" id="hero-tagline">
             <h2 className="
               text-fluid-3xl sm:text-fluid-4xl md:text-fluid-5xl
               font-bold leading-tight
-              mb-2
+              mb-4
               will-change-transform
             ">
-              <span className="inline-block min-h-[1.2em] break-words px-2 will-change-transform">
+              <span className="gradient-text-orange-pink inline-block min-h-[1.2em] break-words px-2 will-change-transform">
                 {currentText}
                 <span className="animate-pulse opacity-75">|</span>
               </span>
             </h2>
             <p className="
               text-fluid-base sm:text-fluid-lg md:text-fluid-xl
-              text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4
+              max-w-4xl mx-auto leading-relaxed px-4
               will-change-transform transition-opacity duration-300
             ">
-              Generative AI & Cloud (AWS | GCP) | Python • AI/ML • LLMs • MLOps
+              <span className="gradient-text-orange-purple">Generative AI</span> & <span className="gradient-text-orange-pink">Cloud</span> (AWS | GCP) | Python • AI/ML • LLMs • MLOps
             </p>
           </div>
           
           {/* Mobile-Optimized CTA Buttons with Enhanced Touch-Friendly Design */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full" id="hero-ctas">
-          <Button
-            size="lg"
-            className="
-              gradient-button transition-all duration-300
-              text-fluid-lg font-semibold
-              px-8 py-4
-              rounded-full w-full sm:w-auto
-              min-h-[52px] touch-manipulation
-              hover:scale-105 active:scale-95
-              shadow-lg hover:shadow-xl
-              will-change-transform
-              focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2
-              active:shadow-md active:translate-y-0.5
-            "
-            onClick={() => scrollToSection('projects')}
-          >
-            View Projects
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="
-              text-fluid-lg font-semibold
-              px-8 py-4
-              rounded-full w-full sm:w-auto
-              min-h-[52px] touch-manipulation
-              border-gradient-purple/30 hover:border-gradient-purple/60
-              hover:bg-gradient-purple/10 transition-all duration-300
-              hover:scale-105 active:scale-95
-              shadow-md hover:shadow-lg
-              backdrop-blur-sm will-change-transform
-              focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2
-              active:shadow-sm active:translate-y-0.5
-            "
-            onClick={downloadResume}
-          >
-            <Download className="mr-2 h-5 w-5 transition-transform duration-200 group-hover:-translate-y-0.5" />
-            Download Resume
-          </Button>
+            <Button 
+              size="lg" 
+              className="
+                gradient-button transition-all duration-300
+                text-fluid-lg font-semibold
+                px-8 py-4
+                rounded-full w-full sm:w-auto
+                min-h-[52px] touch-manipulation
+                hover:scale-105 active:scale-95
+                shadow-lg hover:shadow-xl
+                will-change-transform
+                focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2
+                active:shadow-md active:translate-y-0.5
+              " 
+              onClick={() => scrollToSection('projects')}
+            >
+              View Projects
+              <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="
+                text-fluid-lg font-semibold
+                px-8 py-4
+                rounded-full w-full sm:w-auto
+                min-h-[52px] touch-manipulation
+                border-gradient-purple/30 hover:border-gradient-purple/60
+                hover:bg-gradient-purple/10 transition-all duration-300
+                hover:scale-105 active:scale-95
+                shadow-md hover:shadow-lg
+                backdrop-blur-sm will-change-transform
+                focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2
+                active:shadow-sm active:translate-y-0.5
+              " 
+              onClick={downloadResume}
+            >
+              <Download className="mr-2 h-5 w-5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+              Resume
+            </Button>
           </div>
         </div>
       </div>

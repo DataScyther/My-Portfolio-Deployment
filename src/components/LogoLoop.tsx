@@ -70,7 +70,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, dependencies);
+  }, [callback, elements, dependencies]);
 };
 
 const useImageLoader = (
@@ -110,7 +110,7 @@ const useImageLoader = (
         img.removeEventListener('error', handleImageLoad);
       });
     };
-  }, dependencies);
+  }, [seqRef, onLoad, dependencies]);
 };
 
 const useAnimationLoop = (
@@ -180,7 +180,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover]);
+  }, [trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover]);
 };
 
 export const LogoLoop = React.memo<LogoLoopProps>(
@@ -223,10 +223,12 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         const copiesNeeded = Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
         setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
       }
-    }, []);
+    }, []); // Keep this as is since it doesn't depend on external values
 
+    // Fixed: Pass dependencies as array literals instead of variables
     useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap, logoHeight]);
 
+    // Fixed: Pass dependencies as array literals instead of variables
     useImageLoader(seqRef, updateDimensions, [logos, gap, logoHeight]);
 
     useAnimationLoop(trackRef, targetVelocity, seqWidth, isHovered, pauseOnHover);
@@ -268,74 +270,51 @@ export const LogoLoop = React.memo<LogoLoopProps>(
         const isNodeItem = 'node' in item;
 
         const content = isNodeItem ? (
-          <span
-            className={cx(
+          <span className={cx(
               'inline-flex items-center',
               'motion-reduce:transition-none',
               scaleOnHover &&
                 'transition-transform duration-300 ease-in-out group-hover/item:scale-120'
-            )}
-            aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
+            )} aria-hidden={!!('href' in item && item.href) && !(('ariaLabel' in item && item.ariaLabel))}
           >
-            {(item as any).node}
+            {(item as { node: React.ReactNode }).node}
           </span>
         ) : (
-          <img
-            className={cx(
+          <img className={cx(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
               '[-webkit-user-drag:none] pointer-events-none',
               '[image-rendering:-webkit-optimize-contrast]',
               'motion-reduce:transition-none',
               scaleOnHover &&
                 'transition-transform duration-300 ease-in-out group-hover/item:scale-120'
-            )}
-            src={(item as any).src}
-            srcSet={(item as any).srcSet}
-            sizes={(item as any).sizes}
-            width={(item as any).width}
-            height={(item as any).height}
-            alt={(item as any).alt ?? ''}
-            title={(item as any).title}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
+            )} src={(item as { src: string }).src} srcSet={(item as { srcSet?: string }).srcSet} sizes={(item as { sizes?: string }).sizes} width={(item as { width?: number }).width} height={(item as { height?: number }).height} alt={(item as { alt?: string }).alt ?? ''} title={(item as { title?: string }).title} loading="lazy" decoding="async" draggable={false}
           />
         );
 
         const itemAriaLabel = isNodeItem
-          ? ((item as any).ariaLabel ?? (item as any).title)
-          : ((item as any).alt ?? (item as any).title);
+          ? (('ariaLabel' in item && item.ariaLabel) ?? ('title' in item && item.title))
+          : (('alt' in item && item.alt) ?? ('title' in item && item.title));
 
-        const inner = (item as any).href ? (
-          <a
-            className={cx(
+        const inner = 'href' in item && item.href ? (
+          <a className={cx(
               'inline-flex items-center no-underline rounded',
               'transition-opacity duration-200 ease-linear',
               'hover:opacity-80',
               'focus-visible:outline focus-visible:outline-current focus-visible:outline-offset-2'
-            )}
-            href={(item as any).href}
-            aria-label={itemAriaLabel || 'logo link'}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
+            )} href={item.href} aria-label={itemAriaLabel || 'logo link'} target="_blank" rel="noreferrer noopener">
             {content}
-          </a>
+</a>
         ) : (
           content
         );
 
         return (
-          <li
-            className={cx(
+<li className={cx(
               'flex-none mr-[var(--logoloop-gap)] text-[length:var(--logoloop-logoHeight)] leading-[1]',
               scaleOnHover && 'overflow-visible group/item'
-            )}
-            key={key}
-            role="listitem"
-          >
+            )} key={key} role="listitem">
             {inner}
-          </li>
+</li>
         );
       },
       [scaleOnHover]
@@ -344,12 +323,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     const logoLists = useMemo(
       () =>
         Array.from({ length: copyCount }, (_, copyIndex) => (
-          <ul
-            className="flex items-center"
-            key={`copy-${copyIndex}`}
-            role="list"
-            aria-hidden={copyIndex > 0}
-            ref={copyIndex === 0 ? seqRef : undefined}
+<ul className="flex items-center" key={`copy-${copyIndex}`} role="list" aria-hidden={copyIndex > 0} ref={copyIndex === 0 ? seqRef : undefined}
           >
             {logos.map((item, itemIndex) => renderLogoItem(item, `${copyIndex}-${itemIndex}`))}
           </ul>
@@ -367,43 +341,32 @@ export const LogoLoop = React.memo<LogoLoopProps>(
     );
 
     return (
-      <div
-        ref={containerRef}
-        className={rootClasses}
-        style={containerStyle}
-        role="region"
-        aria-label={ariaLabel}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+      <div ref={containerRef} className={rootClasses} style={containerStyle} role="region" aria-label={ariaLabel} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
       >
         {fadeOut && (
           <>
-            <div
-              aria-hidden
-              className={cx(
+<div
+              aria-hidden className={cx(
                 'pointer-events-none absolute inset-y-0 left-0 z-[1]',
                 'w-[clamp(24px,8%,120px)]',
                 'bg-[linear-gradient(to_right,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
               )}
             />
-            <div
-              aria-hidden
-              className={cx(
+<div
+              aria-hidden className={cx(
                 'pointer-events-none absolute inset-y-0 right-0 z-[1]',
                 'w-[clamp(24px,8%,120px)]',
                 'bg-[linear-gradient(to_left,var(--logoloop-fadeColor,var(--logoloop-fadeColorAuto))_0%,rgba(0,0,0,0)_100%)]'
               )}
             />
-          </>
+</>
         )}
 
-        <div
-          className={cx('flex w-max will-change-transform select-none', 'motion-reduce:transform-none')}
-          ref={trackRef}
+        <div className={cx('flex w-max will-change-transform select-none', 'motion-reduce:transform-none')} ref={trackRef}
         >
           {logoLists}
         </div>
-      </div>
+</div>
     );
   }
 );

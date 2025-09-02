@@ -207,7 +207,7 @@ const Navigation = () => {
             {/* Logo - Perfect Bottom Baseline Alignment */}
             <a
               href="#"
-              className="text-xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 flex items-center pb-2 leading-none"
+              className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 flex items-center pb-2 leading-none"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               NK

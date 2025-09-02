@@ -14,6 +14,8 @@ export * from './sheet';
 export * from './skeleton';
 export * from './sonner';
 export * from './toast';
+export * from './toaster';
+export * from './use-toast';
 export * from './dialog';
 export * from './alert';
 export * from './alert-dialog';
