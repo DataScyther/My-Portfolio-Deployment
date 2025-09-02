@@ -194,7 +194,7 @@ const Navigation = () => {
         className="transition-opacity duration-200"
       />
       
-      <div className="fixed top-1 sm:top-2 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-2 sm:px-4">
+      <div className="fixed top-1 sm:top-2 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-3 sm:px-4 pt-[max(env(safe-area-inset-top),0.25rem)]">
       <nav 
         ref={navRef}
         className={`relative rounded-full transition-all duration-200 ${
@@ -202,14 +202,15 @@ const Navigation = () => {
             ? 'bg-background/30 dark:bg-background/30 backdrop-blur-lg border border-border/20 shadow-xl' 
             : 'bg-background/20 dark:bg-background/20 backdrop-blur-md border border-border/10'
         }`}
+        role="navigation"
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
-          <div className="flex items-center justify-between h-11 sm:h-12 md:h-16">
+          <div className="flex items-center justify-between h-12 sm:h-12 md:h-16">
             {/* Logo - Perfect Bottom Baseline Alignment */}
             <GradientText
               as="a"
               href="#"
-              className="text-xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 inline-flex items-center h-full leading-none"
+              className="text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation pl-1 sm:pl-2 inline-flex items-center h-full leading-none tracking-tight -translate-y-[0.5px]"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               NK
@@ -260,9 +261,10 @@ const Navigation = () => {
             <button
               onClick={toggleMenu}
               disabled={isMobileMenuAnimating}
-              className="lg:hidden w-10 h-10 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50"
+              className="lg:hidden w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50 shrink-0 p-0"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <div className={`transition-all duration-300 will-change-transform ${isOpen ? 'rotate-180' : ''}`}>
                 {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -271,12 +273,12 @@ const Navigation = () => {
           </div>
           
           {/* Mobile Navigation - Compact and Efficient */}
-          <div className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${
+          <div id="mobile-menu" className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${
             isOpen 
               ? 'opacity-100 pointer-events-auto' 
               : 'opacity-0 pointer-events-none'
           }`}>
-            <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1">
+            <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1 pt-[env(safe-area-inset-top)]">
               <div className="px-3 py-4 space-y-1">
                 {navItems.map((item, index) => (
                   <button
