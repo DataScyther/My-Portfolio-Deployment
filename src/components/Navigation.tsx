@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
+import GradientText from "./GradientText";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -205,13 +206,14 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex items-center justify-between h-11 sm:h-12 md:h-16">
             {/* Logo - Perfect Bottom Baseline Alignment */}
-            <a
+            <GradientText
+              as="a"
               href="#"
-              className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 flex items-center pb-2 leading-none"
+              className="text-xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation ml-1 sm:ml-2 inline-flex items-center h-full leading-none"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               NK
-            </a>
+            </GradientText>
             
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
@@ -245,11 +247,11 @@ const Navigation = () => {
                 <ThemeToggle />
                 <Button
                   size="sm"
-                  className="gradient-button px-4 sm:px-6 py-2 rounded-full text-sm"
+                  className="gradient-button no-magnetic magnetic-soft px-4 sm:px-6 py-2 rounded-full text-sm"
                   onClick={downloadResume}
                 >
                   <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                  Resume
+                  <span className="text-white">Resume</span>
                 </Button>
               </div>
             </div>
@@ -290,7 +292,7 @@ const Navigation = () => {
                     }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-base font-medium">{item.label}</span>
+                      <GradientText className="text-base font-medium">{item.label}</GradientText>
                       <div className="nav-underline mobile-underline"></div>
                     </div>
                   </button>
@@ -302,11 +304,11 @@ const Navigation = () => {
                   </div>
                   <Button 
                     size="default" 
-                    className="gradient-button w-full py-3 text-base font-semibold rounded-full will-change-transform hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1"
+                    className="gradient-button no-magnetic magnetic-soft w-full py-3 text-base font-semibold rounded-full will-change-transform hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1"
                     onClick={downloadResume}
                   >
                     <Download className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:-translate-y-0.5" />
-                    Download Resume
+                    <span className="text-white">Download Resume</span>
                   </Button>
                 </div>
               </div>

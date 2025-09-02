@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import GradientText from "./GradientText";
 import { Card } from "@/components/ui/card";
 import { Code, Database, Cloud, BarChart3, Brain, GitBranch } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -134,7 +135,7 @@ const SkillsSection = () => {
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Technical <span className="gradient-text">Skills</span>
+            Technical <GradientText>Skills</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
             A comprehensive toolkit for building intelligent solutions and data-driven applications
@@ -160,12 +161,12 @@ const SkillsSection = () => {
               
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
-                  <span
+                  <GradientText
                     key={skillIndex}
                     className="px-3 py-1.5 text-sm rounded-full bg-muted/50 border border-border hover:border-accent/30 transition-all duration-300 cursor-default will-change-transform hover:scale-105 active:scale-95 touch-manipulation"
                   >
                     {skill}
-                  </span>
+                  </GradientText>
                 ))}
               </div>
             </Card>
@@ -175,7 +176,7 @@ const SkillsSection = () => {
         {/* Proficiency Bars - Enhanced Mobile Layout */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
-            Core <span className="gradient-text">Proficiencies</span>
+            Core <GradientText>Proficiencies</GradientText>
           </h3>
           
           <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
@@ -187,8 +188,8 @@ const SkillsSection = () => {
             ].map((item, index) => (
               <div key={index} className={`${styles.slideIn} ${styles[`delay-${index === 0 ? '0' : index * 100}`]} will-change-transform`}>
                 <div className="flex justify-between items-center mb-3">
-                  <span className="font-medium text-sm sm:text-base">{item.skill}</span>
-                  <span className="text-sm font-mono text-secondary">{item.level}%</span>
+                  <span className="text-foreground font-medium text-sm sm:text-base">{item.skill}</span>
+                  <span className="text-foreground text-sm font-mono">{item.level}%</span>
                 </div>
                 <div className={styles.progressContainer}>
                   <div 
@@ -203,7 +204,7 @@ const SkillsSection = () => {
         {/* Technology Stack Carousel */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
-            Technology <span className="gradient-text">Stack</span>
+            Technology <GradientText>Stack</GradientText>
           </h3>
           <div className="h-24 flex items-center">
             <LogoLoop

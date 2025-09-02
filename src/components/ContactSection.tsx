@@ -1,3 +1,5 @@
+import React, { useRef } from "react";
+import GradientText from "./GradientText";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -78,7 +80,7 @@ const ContactSection = () => {
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Let's <span className="gradient-text">Connect</span>
+            Let's <GradientText>Connect</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
             Ready to collaborate on exciting data science projects or discuss the latest in AI/ML? 
@@ -90,7 +92,7 @@ const ContactSection = () => {
           {/* Contact Information - Enhanced Mobile Layout */}
           <div className="slide-in-left" style={{ animationDelay: '200ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">
-              Get In <span className="gradient-text">Touch</span>
+              Get In <GradientText>Touch</GradientText>
             </h3>
             
             <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
@@ -157,7 +159,7 @@ const ContactSection = () => {
           <div className="slide-in-right" style={{ animationDelay: '400ms' }}>
             <Card className="card-glow p-6 sm:p-8 will-change-transform">
               <h3 className="text-xl sm:text-2xl font-semibold mb-6">
-                Send Me a <span className="gradient-text">Message</span>
+                Send Me a <GradientText>Message</GradientText>
               </h3>
               
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
@@ -250,12 +252,9 @@ const ContactSection = () => {
               <div className="mt-6 text-center text-sm text-secondary">
                 <p>
                   Prefer direct contact? Email me at{" "}
-                  <a 
-                    href="mailto:ishantkumaryts@gmail.com" 
-                    className="gradient-text hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 rounded touch-manipulation"
-                  >
+                  <GradientText as="a" href="mailto:ishantkumaryts@gmail.com" className="hover:underline focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 rounded touch-manipulation">
                     ishantkumaryts@gmail.com
-                  </a>
+                  </GradientText>
                 </p>
               </div>
             </Card>
@@ -266,7 +265,7 @@ const ContactSection = () => {
         <div className="text-center mt-12 sm:mt-16 slide-in-up" style={{ animationDelay: '600ms' }}>
           <Card className="card-glow p-6 sm:p-8 max-w-4xl mx-auto will-change-transform">
             <h3 className="text-xl sm:text-2xl font-semibold mb-4">
-              Ready to Build Something <span className="gradient-text">Amazing</span>?
+              Ready to Build Something <GradientText>Amazing</GradientText>?
             </h3>
             <p className="text-secondary mb-6 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
               Whether you have a data science project in mind, need help with AI/ML implementation, 

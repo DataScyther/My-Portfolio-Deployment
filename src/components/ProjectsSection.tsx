@@ -1,4 +1,5 @@
 import { ExternalLink, Github, BarChart3, Brain, Monitor, Music } from 'lucide-react';
+import GradientText from "@/components/GradientText";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "./ui/button";
@@ -141,7 +142,7 @@ const ProjectsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Featured <span className="gradient-text">Projects</span>
+            Featured <GradientText>Projects</GradientText>
           </h2>
           <p className="text-xl text-secondary max-w-3xl mx-auto">
             A showcase of innovative solutions spanning data science, machine learning, and creative technology

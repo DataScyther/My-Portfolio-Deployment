@@ -25,6 +25,7 @@ export const useScrollProgress = (options: ScrollProgressOptions = {}): ScrollPr
   const scrollTimeout = useRef<number>();
   const rafId = useRef<number>();
   const isThrottled = useRef(false);
+  const progressRef = useRef(0);
 
   // Calculate scroll progress with clean simplicity
   const calculateProgress = useCallback(() => {
@@ -35,8 +36,8 @@ export const useScrollProgress = (options: ScrollProgressOptions = {}): ScrollPr
     
     // Clean, direct progress calculation
     const rawProgress = Math.max(0, Math.min(100, (scrollTop / docHeight) * 100));
-    
-    return Math.round(rawProgress * 10) / 10; // One decimal precision
+    // One decimal precision
+    return Math.round(rawProgress * 10) / 10;
   }, []);
 
   // Calculate scroll velocity and direction
@@ -67,8 +68,11 @@ export const useScrollProgress = (options: ScrollProgressOptions = {}): ScrollPr
     rafId.current = requestAnimationFrame(() => {
       const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
       const newProgress = calculateProgress();
-      
-      setProgress(newProgress);
+      // Only commit state update if change is meaningful to avoid thrash
+      if (Math.abs(newProgress - progressRef.current) >= 0.2) {
+        progressRef.current = newProgress;
+        setProgress(newProgress);
+      }
       setIsScrolling(true);
       updateScrollMetrics(currentScrollY);
       
@@ -82,7 +86,7 @@ export const useScrollProgress = (options: ScrollProgressOptions = {}): ScrollPr
         setIsScrolling(false);
         setDirection(null);
         setVelocity(0);
-      }, 120);
+      }, 90);
       
       // Reset throttle
       window.setTimeout(() => {
@@ -102,7 +106,9 @@ export const useScrollProgress = (options: ScrollProgressOptions = {}): ScrollPr
 
   useEffect(() => {
     // Initial progress calculation
-    setProgress(calculateProgress());
+    const initial = calculateProgress();
+    progressRef.current = initial;
+    setProgress(initial);
     lastScrollY.current = window.pageYOffset || document.documentElement.scrollTop;
     lastTimestamp.current = performance.now();
 

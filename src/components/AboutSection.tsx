@@ -1,3 +1,4 @@
+import GradientText from "./GradientText";
 import { Card } from "@/components/ui/card";
 import { GraduationCap, User, Target, TrendingUp } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -37,7 +38,7 @@ const AboutSection = () => {
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            About <span className="gradient-text">Me</span>
+            About <GradientText>Me</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
             Passionate about transforming data into innovation and creating content that educates the tech community
@@ -63,7 +64,7 @@ const AboutSection = () => {
                 
                 <p className="text-sm sm:text-base">
                   For the past 3+ years, I've been sharing my knowledge through my YouTube channel 
-                <span className="gradient-text font-semibold"> Mighty-TechShorts</span>, where I create
+                  <GradientText className="font-semibold"> Mighty-TechShorts</GradientText>, where I create
                   educational content about emerging technologies, helping thousands of learners understand 
                   complex concepts in simple terms.
                 </p>
@@ -80,7 +81,7 @@ const AboutSection = () => {
           {/* Timeline - Enhanced Mobile Experience */}
           <div className="slide-in-right" style={{ animationDelay: '400ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center lg:text-left">
-              Career & Education <span className="gradient-text">Timeline</span>
+              Career & Education <GradientText>Timeline</GradientText>
             </h3>
             
             <div className="space-y-6">
@@ -92,9 +93,9 @@ const AboutSection = () => {
                   
                   <div className="flex-grow min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
-                      <span className="text-xs sm:text-sm font-mono px-3 py-1 rounded-full bg-muted/50 text-gradient-purple w-fit">
+                      <GradientText className="text-xs sm:text-sm font-mono px-3 py-1 rounded-full bg-muted/50 text-gradient-purple w-fit">
                         {item.year}
-                      </span>
+                      </GradientText>
                       <h4 className="font-semibold text-base sm:text-lg leading-tight">{item.title}</h4>
                     </div>
                     <p className="text-secondary text-sm sm:text-base leading-relaxed">{item.description}</p>

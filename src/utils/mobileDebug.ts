@@ -2,13 +2,25 @@
  * Mobile debugging utilities for testing section visibility
  */
 
+declare global {
+  interface Window {
+    mobileDebug: typeof mobileDebugUtils;
+  }
+}
+
 export const mobileDebugUtils = {
   /**
    * Check if sections are visible in the viewport
    */
   checkSectionVisibility: () => {
     const sections = ['certifications', 'skills', 'projects', 'experience'];
-    const results: Record<string, any> = {};
+    const results: Record<string, {
+      exists: boolean;
+      isInViewport?: boolean;
+      opacity?: string;
+      transform?: string;
+      rect?: { top: number; bottom: number; height: number };
+    }> = {};
     
     sections.forEach(sectionId => {
       const element = document.getElementById(sectionId);
@@ -112,5 +124,5 @@ export const mobileDebugUtils = {
 
 // Make available globally for console debugging
 if (typeof window !== 'undefined') {
-  (window as any).mobileDebug = mobileDebugUtils;
+  window.mobileDebug = mobileDebugUtils;
 }

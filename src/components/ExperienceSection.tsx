@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GradientText from "./GradientText";
 import { Building2, Calendar, MapPin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
@@ -88,7 +89,7 @@ const ExperienceSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Professional <span className="gradient-text">Experience</span>
+            Professional <GradientText>Experience</GradientText>
           </h2>
           <p className="text-xl text-secondary max-w-3xl mx-auto">
             Building expertise through diverse experiences in data science, analytics, and technology education
@@ -111,7 +112,7 @@ const ExperienceSection = () => {
                     <h3 className="text-xl font-semibold">{exp.company}</h3>
                   </div>
                   
-                  <h4 className="text-lg font-medium gradient-text mb-3">{exp.title}</h4>
+                  <GradientText as="h4" className="text-lg font-medium mb-3">{exp.title}</GradientText>
                   
                   <div className="space-y-2 text-sm text-secondary">
                     <div className="flex items-center">
@@ -141,7 +142,7 @@ const ExperienceSection = () => {
                       {exp.achievements.map((achievement, achIndex) => (
                         <div key={achIndex} className="flex items-start">
                           <div className="w-2 h-2 rounded-full bg-accent mt-2 mr-3 flex-shrink-0"></div>
-                          <span className="text-secondary text-sm">{achievement}</span>
+                          <GradientText className="text-sm">{achievement}</GradientText>
                         </div>
                       ))}
                     </div>

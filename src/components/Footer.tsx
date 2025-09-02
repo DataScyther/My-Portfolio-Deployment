@@ -1,4 +1,5 @@
 import React from "react";
+import GradientText from "@/components/GradientText";
 import { Github, Linkedin, Youtube, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
@@ -49,7 +50,7 @@ const Footer = () => {
         <div className="grid gap-8 sm:gap-6 md:grid-cols-3">
           {/* Brand Section - Enhanced Mobile Layout */}
           <div className="text-center md:text-left">
-            <div className="text-xl sm:text-2xl font-bold gradient-text mb-4">Nishant Kumar</div>
+            <GradientText className="text-xl sm:text-2xl font-bold mb-4">Nishant Kumar</GradientText>
             <p className="text-secondary mb-4 leading-relaxed text-sm sm:text-base px-2 md:px-0">
               Future Data Scientist passionate about AI/ML, cloud computing, and creating 
               educational content to help others learn and grow in technology.
@@ -75,7 +76,7 @@ const Footer = () => {
           {/* Quick Links - Enhanced Mobile Grid */}
           <div className="text-center md:text-left">
             <h3 className="font-semibold mb-4 text-base sm:text-lg">Quick Links</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-2 justify-items-center md:justify-items-start">
               {quickLinks.map((link, index) => (
                 <button
                   key={index}

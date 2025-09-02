@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Award, ExternalLink, Brain, Code, Code2, BrainCircuit, Bot, BarChart3, Building2, GraduationCap, PieChart, Plane, CloudCog, AreaChart, LineChart, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useEffect } from "react";
+import GradientText from "./GradientText";
 import StatCard from "@/components/StatCard";
 
 const CertificationsSection = () => {
@@ -226,7 +227,7 @@ const CertificationsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Certifications</span> & Achievements
+            <GradientText>Certifications</GradientText> & Achievements
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Continuous learning and professional development in cutting-edge technologies
@@ -281,9 +282,9 @@ const CertificationsSection = () => {
                 </h3>
                 <div className="flex items-center gap-2 text-sm text-secondary mb-3">
                   <Award className="h-4 w-4" />
-                  <span>{cert.issuer}</span>
-                  <span>•</span>
-                  <span>{cert.date}</span>
+                  <GradientText>{cert.issuer}</GradientText>
+                  <GradientText>•</GradientText>
+                  <GradientText>{cert.date}</GradientText>
                 </div>
               </div>
               

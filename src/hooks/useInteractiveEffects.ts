@@ -22,7 +22,6 @@ export function useMagneticHover(selector: string, options?: {
     if (reduceMotion) return;
 
     const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));
-    console.log(`Ultra-Magnetic hover: Found ${elements.length} elements with selector "${selector}"`);
     if (elements.length === 0) return;
 
     const max = options?.maxTranslatePx ?? 12; // Increased for more dramatic effect
@@ -30,7 +29,7 @@ export function useMagneticHover(selector: string, options?: {
     const damping = options?.damping ?? 0.08; // Ultra-smooth damping
     const attractionRadius = options?.attractionRadius ?? 1.8; // Magnetic field radius
     const magneticStrength = options?.magneticStrength ?? 2.2; // Core magnetic force
-    console.log(`Ultra-Magnetic: Max ${max}px, Intensity ${intensity}, Damping ${damping}, Radius ${attractionRadius}`);
+    // Debug logs disabled for performance; re-enable if needed
 
     // Advanced performance optimization with adaptive throttling
     let rafId: number | null = null;
@@ -205,7 +204,8 @@ export function useMagneticHover(selector: string, options?: {
       const leave = () => onLeave(el);
       
       el.addEventListener("mouseenter", enter);
-      el.addEventListener("mousemove", move);
+      // passive for smoother scrolling/input
+      el.addEventListener("mousemove", move, { passive: true });
       el.addEventListener("mouseleave", leave);
       
       listeners.push(() => {
@@ -255,10 +255,9 @@ export function useGlobalMagneticHover(options?: {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
-    // Apply magnetic hover to all gradient buttons
-    const selector = '.gradient-button';
+    // Apply magnetic hover to all gradient buttons except those explicitly opted out
+    const selector = '.gradient-button:not(.no-magnetic)';
     const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));
-    console.log(`Global Ultra-Magnetic hover: Found ${elements.length} elements with selector "${selector}"`);
     if (elements.length === 0) return;
 
     const max = options?.maxTranslatePx ?? 12; // Increased for more dramatic effect
@@ -474,7 +473,7 @@ export function useGlobalMagneticHover(options?: {
               const leave = () => onLeave(node);
               
               node.addEventListener("mouseenter", enter);
-              node.addEventListener("mousemove", move);
+              node.addEventListener("mousemove", move, { passive: true });
               node.addEventListener("mouseleave", leave);
               
               listeners.push(() => {
@@ -492,7 +491,7 @@ export function useGlobalMagneticHover(options?: {
               const leave = () => onLeave(child);
               
               child.addEventListener("mouseenter", enter);
-              child.addEventListener("mousemove", move);
+              child.addEventListener("mousemove", move, { passive: true });
               child.addEventListener("mouseleave", leave);
               
               listeners.push(() => {

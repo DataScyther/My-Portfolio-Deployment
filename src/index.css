@@ -1481,6 +1481,7 @@ ORANGE-INFUSED GRADIENT TEXT EFFECTS
   background: linear-gradient(135deg, hsl(30 100% 70%), hsl(270 100% 70%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent; /* Firefox support */
   background-clip: text;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -1489,9 +1490,11 @@ ORANGE-INFUSED GRADIENT TEXT EFFECTS
 
 /* Orange-Pink Gradient Text */
 .gradient-text-orange-pink {
-  background: linear-gradient(135deg, hsl(30 100% 70%), hsl(320 100% 70%));
+  /* Unified headline gradient palette (purple → pink → orange) */
+  background: linear-gradient(90deg, hsl(270 100% 70%), hsl(320 100% 70%), hsl(30 100% 70%), hsl(320 100% 70%), hsl(270 100% 70%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent; /* Firefox support */
   background-clip: text;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -1500,9 +1503,11 @@ ORANGE-INFUSED GRADIENT TEXT EFFECTS
 
 /* Warm Gradient Text */
 .gradient-text-warm {
-  background: linear-gradient(135deg, hsl(25 100% 65%), hsl(45 100% 70%), hsl(65 100% 65%));
+  /* Unified headline gradient palette (purple → pink → orange) */
+  background: linear-gradient(90deg, hsl(270 100% 70%), hsl(320 100% 70%), hsl(30 100% 70%), hsl(320 100% 70%), hsl(270 100% 70%));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent; /* Firefox support */
   background-clip: text;
   backface-visibility: hidden;
   transform: translateZ(0);
@@ -1551,4 +1556,92 @@ ORANGE-INFUSED GRADIENT TEXT EFFECTS
 .gradient-text-sunset {
   background-size: 200% 200%;
   animation: gradientShiftWarm 6s ease infinite;
+}
+
+/* =========================================
+THEME HEADLINE GRADIENT (Green → Lime → Orange)
+Matches site tokens and the provided reference style
+========================================= */
+.headline-gradient {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--gradient-green)),      /* teal/green */
+    hsl(80 100% 65%),                /* lime */
+    hsl(var(--gradient-orange))      /* orange */
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* Firefox */
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: headlineGradientShift 8s ease-in-out infinite;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes headlineGradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Brand-friendly, softer gradient (Purple → Pink → Orange) */
+.brand-headline-gradient {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--gradient-purple) / 0.95),
+    hsl(310 90% 69%), /* softened pink */
+    hsl(var(--gradient-orange) / 0.95)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-clip: text;
+  background-size: 150% 150%;
+  animation: brandHeadlineShift 12s ease-in-out infinite;
+}
+
+@keyframes brandHeadlineShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Subtle shiny sweep overlay for gradient text */
+.brand-headline-gradient.shiny {
+  /* Layer 1: base brand gradient; Layer 2: moving white sheen */
+  background-image:
+    linear-gradient(
+      90deg,
+      hsl(var(--gradient-purple) / 0.95),
+      hsl(310 90% 69%),
+      hsl(var(--gradient-orange) / 0.95)
+    ),
+    linear-gradient(
+      120deg,
+      transparent 35%,
+      rgba(255,255,255,0.85) 50%,
+      transparent 65%
+    );
+  background-size: 150% 150%, 250% 100%;
+  background-position: 0% 50%, -200% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: brandHeadlineShift 12s ease-in-out infinite, textShine 2.4s ease-in-out infinite;
+}
+
+@keyframes textShine {
+  0% { background-position: 0% 50%, -200% 50%; }
+  50% { background-position: 100% 50%, 0% 50%; }
+  100% { background-position: 0% 50%, 200% 50%; }
+}
+
+/* Respect reduced motion: keep color shift but disable sweep */
+@media (prefers-reduced-motion: reduce) {
+  .brand-headline-gradient.shiny {
+    animation: brandHeadlineShift 12s ease-in-out infinite;
+  }
 }

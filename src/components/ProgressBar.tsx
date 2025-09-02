@@ -84,15 +84,15 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
           background: 'linear-gradient(90deg, hsl(var(--border) / 0.1), hsl(var(--border) / 0.3), hsl(var(--border) / 0.1))'
         }}
       >
-        {/* Progress fill - Buttery smooth and clean */}
+        {/* Progress fill - use GPU-friendly transform to avoid layout thrash */}
         <div
-          className={`${heightClasses} transition-all duration-150 ease-out will-change-transform`}
+          className={`${heightClasses} origin-left will-change-transform transition-transform duration-150 ease-out`}
           style={{
-            width: `${displayProgress}%`,
+            width: '100%',
             background: progressGradient,
             opacity: progressOpacity,
             filter: glowFilter,
-            transform: 'translateZ(0)'
+            transform: `translateZ(0) scaleX(${displayProgress / 100})`
           }}
         />
         
