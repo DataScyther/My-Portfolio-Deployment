@@ -67,8 +67,8 @@ Visit the live portfolio: [Deployed on Vercel]
 
 - **YouTube**: [Mighty-TechShorts](https://www.youtube.com/@Mighty-TechShorts)
 - **Email**: Contact via portfolio form
-- **LinkedIn**: [Nishant Kumar](https://www.linkedin.com/in/nishant-kumar-b0b0b0195/)
-- **GitHub**: [Nishant-Kumar-07](https://github.com/Nishant-Kumar-07)\
+- **LinkedIn**: [Nishant Kumar](https://www.linkedin.com/in/datascyther/)
+- **GitHub**: [Nishant Kumar](https://github.com/DataScyther)
 
 ---
 
