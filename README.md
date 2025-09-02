@@ -69,7 +69,3 @@ Visit the live portfolio: [Deployed on Vercel]
 - **Email**: Contact via portfolio form
 - **LinkedIn**: [Nishant Kumar](https://www.linkedin.com/in/datascyther/)
 - **GitHub**: [Nishant Kumar](https://github.com/DataScyther)
-
----
-
-Last updated: $(Get-Date -Format "yyyy-MM-dd") - CSS syntax fixes, mobile optimizations, and performance enhancements
