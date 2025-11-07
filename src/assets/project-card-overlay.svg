@@ -1,0 +1,23 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="projGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="projCardPattern" width="100" height="100" patternUnits="userSpaceOnUse">
+      <!-- Code brackets and symbols -->
+      <path d="M20 20 L30 30 M40 40 L50 50" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+      <path d="M70 30 L80 20 M60 50 L50 60" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+      <path d="M30 70 L20 80 M50 60 L60 70" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+      <path d="M70 70 L80 80" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+      
+      <!-- Code symbols -->
+      <text x="25" y="40" font-family="monospace" font-size="10" opacity="0.1" fill="currentColor">{}</text>
+      <text x="65" y="80" font-family="monospace" font-size="10" opacity="0.1" fill="currentColor">()</text>
+      <text x="20" y="70" font-family="monospace" font-size="10" opacity="0.1" fill="currentColor">[]</text>
+      <text x="70" y="30" font-family="monospace" font-size="10" opacity="0.1" fill="currentColor">/></text>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#projCardPattern)"/>
+  <rect width="100%" height="100%" fill="url(#projGradient)"/>
+</svg>

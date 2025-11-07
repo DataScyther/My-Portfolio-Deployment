@@ -75,10 +75,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
+    <section id="contact" ref={ref} className="py-16 sm:py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header - Enhanced Mobile Typography */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
+        <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Let's <GradientText>Connect</GradientText>
           </h2>
@@ -88,7 +88,7 @@ const ContactSection = () => {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Information - Enhanced Mobile Layout */}
           <div className="slide-in-left" style={{ animationDelay: '200ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">

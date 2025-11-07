@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GradientText from "./GradientText";
-import { Building2, Calendar, MapPin, Briefcase, TrendingUp, CheckCircle2, Sparkles } from "lucide-react";
+import { Building2, Calendar, MapPin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const ExperienceSection = () => {
@@ -83,10 +83,23 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="experience" ref={ref} className="py-20 px-4 relative overflow-hidden">
+      {/* Background pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img 
+          src="/src/assets/data-dots-pattern.svg" 
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+          aria-hidden="true"
+          alt=""
+        />
+        {/* Additional decorative elements */}
+        <div className="absolute top-40 left-10 w-96 h-96 rounded-full bg-gradient-pink/10 blur-3xl"></div>
+        <div className="absolute bottom-40 right-10 w-80 h-80 rounded-full bg-gradient-orange/10 blur-3xl"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
+        <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Professional <GradientText>Experience</GradientText>
           </h2>
@@ -100,9 +113,20 @@ const ExperienceSection = () => {
           {experiences.map((exp, index) => (
             <Card 
               key={index} 
-              className="card-glow p-6 slide-in-up hover-lift transition-all duration-700 ease-out"
+              className="card-glow p-6 slide-in-up hover-lift transition-all duration-700 ease-out relative overflow-hidden"
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
+              {/* Card background pattern */}
+              <div className="absolute inset-0 pointer-events-none">
+                <img 
+                  src="/src/assets/experience-card-overlay.svg" 
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+                  aria-hidden="true"
+                  alt=""
+                />
+                {/* Corner decoration */}
+                <div className={`absolute top-0 right-0 w-40 h-40 opacity-5 ${exp.color === 'gradient-purple' ? 'bg-gradient-purple' : exp.color === 'gradient-pink' ? 'bg-gradient-pink' : 'bg-gradient-orange'} rounded-bl-full`}></div>
+              </div>
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                 {/* Company Info */}
                 <div className="lg:w-1/3 flex-shrink-0">

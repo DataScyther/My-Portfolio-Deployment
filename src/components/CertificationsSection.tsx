@@ -222,10 +222,10 @@ const CertificationsSection = () => {
   }, []);
 
   return (
-    <section id="certifications" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative bg-background">
+    <section id="certifications" ref={ref} className="py-20 px-4 relative bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
+        <div className="text-center mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <GradientText>Certifications</GradientText> & Achievements
           </h2>
@@ -311,7 +311,7 @@ const CertificationsSection = () => {
           ))}
         </div>
         {/* Animated Stats Section */}
-        <div className="mt-12 sm:mt-16 md:mt-20 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-8">
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {[
             { number: 15, suffix: "+", label: "Certifications", color: "gradient-purple" },
             { number: 5, suffix: "", label: "Major Platforms", color: "gradient-pink" },

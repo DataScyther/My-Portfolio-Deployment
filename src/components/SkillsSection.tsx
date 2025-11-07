@@ -130,26 +130,48 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" ref={ref} className="py-16 sm:py-20 px-4 relative overflow-hidden">
+      {/* Background pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img 
+          src="/src/assets/tech-circuit-pattern.svg" 
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+          aria-hidden="true"
+          alt=""
+        />
+        {/* Additional decorative elements */}
+        <div className="absolute top-20 right-10 w-80 h-80 rounded-full bg-gradient-blue/10 blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-gradient-purple/10 blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Header - Enhanced Mobile Typography */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
+        <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Technical <GradientText>Skills</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
-            A comprehensive toolkit for building intelligent solutions and data-driven applications
+            Expertise in data science, machine learning, and full-stack development
           </p>
         </div>
         
         {/* Skills Grid - Enhanced for Mobile */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {skillCategories.map((category, index) => (
             <Card 
               key={index} 
-              className="card-glow p-5 sm:p-6 group hover-lift skill-card opacity-0 transform translate-y-4 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] active:scale-[0.98]"
+              className="card-glow p-5 sm:p-6 group hover-lift skill-card opacity-0 transform translate-y-4 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
+              {/* Card background pattern */}
+              <div className="absolute inset-0 pointer-events-none">
+                <img 
+                  src="/src/assets/skill-card-overlay.svg" 
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+                  aria-hidden="true"
+                  alt=""
+                />
+              </div>
               <div className="flex items-center mb-4">
                 <div className={`p-3 rounded-lg ${getColorClass(category.color)} mr-3 sm:mr-4 group-hover:scale-110 transition-transform duration-300 will-change-transform flex-shrink-0`}>
                   <div className="h-6 w-6 sm:h-8 sm:w-8">
@@ -179,7 +201,7 @@ const SkillsSection = () => {
             Core <GradientText>Proficiencies</GradientText>
           </h3>
           
-          <div className="grid gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
+          <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
             {[
               { skill: "Python & Data Science", level: 95 },
               { skill: "Machine Learning & AI", level: 90 },

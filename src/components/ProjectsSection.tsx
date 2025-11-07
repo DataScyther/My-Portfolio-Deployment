@@ -137,10 +137,24 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" ref={ref} className="py-20 px-4 relative overflow-hidden">
+      {/* Background pattern overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        <img 
+          src="/src/assets/code-grid-pattern.svg" 
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+          aria-hidden="true"
+          alt=""
+        />
+        {/* Additional decorative elements */}
+        <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-gradient-orange/10 blur-3xl"></div>
+        <div className="absolute bottom-40 left-20 w-80 h-80 rounded-full bg-gradient-blue/10 blur-3xl"></div>
+        <div className="absolute bottom-60 right-1/3 w-60 h-60 rounded-full bg-gradient-purple/5 blur-3xl"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative">
         {/* Section Header */}
-        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <GradientText>Projects</GradientText>
           </h2>
@@ -150,14 +164,25 @@ const ProjectsSection = () => {
         </div>
         
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8" ref={gridRef} id="projects-grid">
+        <div className="grid lg:grid-cols-2 gap-8" ref={gridRef} id="projects-grid">
           {projects.map((project, index) => (
             <Card 
               key={index} 
-              className="card-glow p-6 group cursor-pointer project-card opacity-0 transform translate-y-8 transition-all duration-700 ease-out"
+              className="card-glow p-6 group cursor-pointer project-card opacity-0 transform translate-y-8 transition-all duration-700 ease-out relative overflow-hidden"
               style={{ transitionDelay: `${index * 150}ms` }}
               onClick={() => window.open(project.url, "_blank", "noopener,noreferrer")}
             >
+              {/* Card background pattern */}
+              <div className="absolute inset-0 pointer-events-none">
+                <img 
+                  src="/src/assets/project-card-overlay.svg" 
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-15" 
+                  aria-hidden="true"
+                  alt=""
+                />
+                {/* Corner decoration */}
+                <div className={`absolute bottom-0 left-0 w-40 h-40 opacity-5 ${project.color === 'gradient-purple' ? 'bg-gradient-purple' : project.color === 'gradient-pink' ? 'bg-gradient-pink' : 'bg-gradient-orange'} rounded-tr-full`}></div>
+              </div>
               {/* Project Header */}
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
