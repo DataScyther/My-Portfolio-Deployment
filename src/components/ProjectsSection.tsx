@@ -137,10 +137,10 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section id="projects" ref={ref} className="py-20 px-4 relative">
+    <section id="projects" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Featured <GradientText>Projects</GradientText>
           </h2>
@@ -150,7 +150,7 @@ const ProjectsSection = () => {
         </div>
         
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8" ref={gridRef} id="projects-grid">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8" ref={gridRef} id="projects-grid">
           {projects.map((project, index) => (
             <Card 
               key={index} 

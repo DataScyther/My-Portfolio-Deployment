@@ -130,10 +130,10 @@ const SkillsSection = () => {
   ];
 
   return (
-    <section id="skills" ref={ref} className="py-16 sm:py-20 px-4 relative">
+    <section id="skills" ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Section Header - Enhanced Mobile Typography */}
-        <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
             Technical <GradientText>Skills</GradientText>
           </h2>
@@ -143,7 +143,7 @@ const SkillsSection = () => {
         </div>
         
         {/* Skills Grid - Enhanced for Mobile */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {skillCategories.map((category, index) => (
             <Card 
               key={index} 
@@ -179,7 +179,7 @@ const SkillsSection = () => {
             Core <GradientText>Proficiencies</GradientText>
           </h3>
           
-          <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
             {[
               { skill: "Python & Data Science", level: 95 },
               { skill: "Machine Learning & AI", level: 90 },

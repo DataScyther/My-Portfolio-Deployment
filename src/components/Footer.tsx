@@ -45,9 +45,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-muted/20 border-t border-border/50 mt-16 sm:mt-20">
-      <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12">
-        <div className="grid gap-8 sm:gap-6 md:grid-cols-3">
+    <footer className="bg-muted/20 border-t border-border/50 mt-12 sm:mt-16 md:mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12">
+        <div className="grid gap-6 sm:gap-6 md:grid-cols-3">
           {/* Brand Section - Enhanced Mobile Layout */}
           <div className="text-center md:text-left">
             <GradientText className="text-xl sm:text-2xl font-bold mb-4">Nishant Kumar</GradientText>

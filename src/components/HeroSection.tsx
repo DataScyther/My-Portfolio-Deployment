@@ -134,7 +134,7 @@ const HeroSection = () => {
         <div id="hero-anim-anchor" className="opacity-0" />
         
         {/* Hero Content Container - tighter vertical rhythm */}
-        <div className="flex flex-col items-center justify-center space-y-6 sm:space-y-6 md:space-y-6">
+        <div className="flex flex-col items-center justify-center space-y-4 sm:space-y-5 md:space-y-6">
           
           {/* Mobile-Optimized Main Heading with Enhanced Fluid Typography */}
           <div className="text-center" id="hero-title">
