@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+// import React from "react";
 import GradientText from "./GradientText";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

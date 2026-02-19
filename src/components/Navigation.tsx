@@ -22,78 +22,78 @@ const Navigation = () => {
   // Update active link and underline position
   const updateActiveLink = useCallback(() => {
     if (!navRef.current) return;
-    
+
     const activeNavLink = navRef.current.querySelector(`[data-nav-link="#${activeSection}"]`) as HTMLElement;
     if (!activeNavLink) return;
-    
+
     // Update active link
     if (activeLink) activeLink.classList.remove('nav-active');
     activeNavLink.classList.add('nav-active');
     setActiveLink(activeNavLink);
-    
+
     // Update underline position with smooth transition
     if (activeNavLink) {
       const { width, left } = activeNavLink.getBoundingClientRect();
       const navRect = navRef.current.getBoundingClientRect();
-      
+
       // Add transition class for pro motion smoothness
       const underline = navRef.current.querySelector('.nav-underline') as HTMLElement;
       if (underline) {
         underline.style.transition = 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), width 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       }
-      
+
       setUnderlineStyle({
         width,
         left: left - navRect.left
       });
     }
   }, [activeSection, activeLink]);
-  
+
   // Handle mouse enter/leave for hover effects
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     const target = e.currentTarget as HTMLElement;
     const underline = document.querySelector('.nav-underline') as HTMLElement;
     if (!underline) return;
-    
+
     const { width, left } = target.getBoundingClientRect();
     const navRect = navRef.current?.getBoundingClientRect();
     if (!navRect) return;
-    
+
     // Disable transition for hover effect
     underline.style.transition = 'none';
-    
+
     setUnderlineStyle({
       width,
       left: left - navRect.left
     });
   }, []);
-  
+
   const handleMouseLeave = useCallback(() => {
     if (!activeLink || !navRef.current) return;
-    
+
     const { width, left } = activeLink.getBoundingClientRect();
     const navRect = navRef.current.getBoundingClientRect();
-    
+
     // Re-enable pro motion transition for smooth return
     const underline = navRef.current.querySelector('.nav-underline') as HTMLElement;
     if (underline) {
       underline.style.transition = 'transform 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94), width 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
-    
+
     setUnderlineStyle({
       width,
       left: left - navRect.left
     });
   }, [activeLink]);
-  
+
   // Handle resize and scroll events
   useEffect(() => {
     updateActiveLink();
-    
+
     const handleResize = () => {
       updateActiveLink();
     };
-    
+
     // Use ResizeObserver for better performance
     resizeObserverRef.current = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -102,11 +102,11 @@ const Navigation = () => {
         }
       }
     });
-    
+
     if (navRef.current) {
       resizeObserverRef.current.observe(navRef.current);
     }
-    
+
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -168,24 +168,24 @@ const Navigation = () => {
   // Mobile menu optimization for smooth animations
   const toggleMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    
+
     if (isMobileMenuAnimating) return; // Prevent rapid toggling
-    
+
     setIsMobileMenuAnimating(true);
     setIsOpen(!isOpen);
-    
+
     // Add haptic feedback for mobile devices
     if (navigator.vibrate && isMobile) {
       navigator.vibrate(50);
     }
-    
+
     setTimeout(() => setIsMobileMenuAnimating(false), 300);
   };
 
   return (
     <>
       {/* Scroll Progress Bar - Clean and Buttery Smooth */}
-      <ProgressBar 
+      <ProgressBar
         height="sm"
         position="top"
         glowEffect={true}
@@ -193,132 +193,130 @@ const Navigation = () => {
         showDirectionIndicator={false}
         className="transition-opacity duration-200"
       />
-      
+
       <div className="fixed top-1 sm:top-2 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-3 sm:px-4 pt-[max(env(safe-area-inset-top),0.25rem)]">
-      <nav 
-        ref={navRef}
-        className={`relative rounded-full transition-all duration-200 ${
-          scrolled 
-            ? 'bg-background/30 dark:bg-background/30 backdrop-blur-lg border border-border/20 shadow-xl' 
-            : 'bg-background/20 dark:bg-background/20 backdrop-blur-md border border-border/10'
-        }`}
-        role="navigation"
-      >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6">
-          <div className="flex items-center justify-between h-12 sm:h-12 md:h-16">
-            {/* Logo - Perfect Bottom Baseline Alignment */}
-            <GradientText
-              as="a"
-              href="#"
-              className="text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation pl-1 sm:pl-2 inline-flex items-center h-full leading-none tracking-tight -translate-y-[0.5px]"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              NK
-            </GradientText>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              <div className="relative flex items-center space-x-1">
-                <div className="relative flex items-center">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.label}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      onClick={() => scrollToSection(item.href)}
-                      data-nav-link={item.href}
-                      className="nav-item relative text-secondary hover:text-foreground px-4 py-2 transition-all duration-200 rounded-full hover:bg-muted/10 will-change-transform flex items-center leading-none"
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                  <div className="nav-underline-container absolute bottom-0 left-0 w-full">
-                    <div
-                      className="nav-underline"
-                      style={{
-                        transform: `translateX(${underlineStyle.left}px)`,
-                        width: `${underlineStyle.width}px`
-                      }}
-                    />
+        <nav
+          ref={navRef}
+          className={`relative rounded-full transition-all duration-200 ${scrolled
+              ? 'bg-background/30 dark:bg-background/30 backdrop-blur-lg border border-border/20 shadow-xl'
+              : 'bg-background/20 dark:bg-background/20 backdrop-blur-md border border-border/10'
+            }`}
+          role="navigation"
+        >
+          <div className="max-w-7xl mx-auto px-3 sm:px-6">
+            <div className="relative flex items-center justify-between h-12 sm:h-12 md:h-16">
+              {/* Logo - Perfect Bottom Baseline Alignment */}
+              <GradientText
+                as="a"
+                href="#"
+                className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation pl-1 sm:pl-2 inline-flex items-center h-full leading-none tracking-tight -translate-y-[0.5px]"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                NK
+              </GradientText>
+
+              {/* Desktop Navigation */}
+              <div className="hidden lg:flex items-center space-x-1 ml-auto">
+                <div className="relative flex items-center space-x-1">
+                  <div className="relative flex items-center">
+                    {navItems.map((item) => (
+                      <button
+                        key={item.label}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={() => scrollToSection(item.href)}
+                        data-nav-link={item.href}
+                        className="nav-item relative text-secondary hover:text-foreground px-4 py-2 transition-all duration-200 rounded-full hover:bg-muted/10 will-change-transform flex items-center leading-none"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                    <div className="nav-underline-container absolute bottom-0 left-0 w-full">
+                      <div
+                        className="nav-underline"
+                        style={{
+                          transform: `translateX(${underlineStyle.left}px)`,
+                          width: `${underlineStyle.width}px`
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="flex items-center space-x-1 sm:space-x-2">
-                <ThemeToggle />
-                <Button
-                  size="sm"
-                  className="gradient-button no-magnetic magnetic-soft px-4 sm:px-6 py-2 rounded-full text-sm"
-                  onClick={downloadResume}
-                >
-                  <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
-                  <span className="text-white">Resume</span>
-                </Button>
-              </div>
-            </div>
-            
-            {/* Mobile Menu Button - Perfect Bottom Baseline Alignment */}
-            <button
-              onClick={toggleMenu}
-              disabled={isMobileMenuAnimating}
-              className="lg:hidden w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50 shrink-0 p-0"
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
-            >
-              <div className={`transition-all duration-300 will-change-transform ${isOpen ? 'rotate-180' : ''}`}>
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </div>
-            </button>
-          </div>
-          
-          {/* Mobile Navigation - Compact and Efficient */}
-          <div id="mobile-menu" className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${
-            isOpen 
-              ? 'opacity-100 pointer-events-auto' 
-              : 'opacity-0 pointer-events-none'
-          }`}>
-            <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1 pt-[env(safe-area-inset-top)]">
-              <div className="px-3 py-4 space-y-1">
-                {navItems.map((item, index) => (
-                  <button
-                    key={item.label}
-                    onClick={() => scrollToSection(item.href)}
-                    data-nav-link={item.href}
-                    className="block w-full text-left text-secondary hover:text-foreground py-3 px-4 hover:bg-muted/20 active:bg-muted/30 transition-all duration-200 nav-link rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-[0.98]"
-                    style={{ 
-                      animationDelay: `${index * 50}ms`,
-                      transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
-                      opacity: isOpen ? 1 : 0,
-                      transition: `all 200ms ease-out ${index * 30}ms`
-                    }}
-                  >
-                    <div className="flex items-center justify-between">
-                      <GradientText className="text-base font-medium">{item.label}</GradientText>
-                      <div className="nav-underline mobile-underline"></div>
-                    </div>
-                  </button>
-                ))}
-                
-                <div className="flex flex-col gap-3 mt-3 pt-3 border-t border-border/20 mx-4 pb-1">
-                  <div className="flex items-center justify-center">
-                    <ThemeToggle />
-                  </div>
-                  <Button 
-                    size="default" 
-                    className="gradient-button no-magnetic magnetic-soft w-full py-3 text-base font-semibold rounded-full will-change-transform hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1"
+
+                <div className="flex items-center space-x-1 sm:space-x-2 ml-2">
+                  <ThemeToggle />
+                  <Button
+                    size="sm"
+                    className="gradient-button no-magnetic magnetic-soft px-4 sm:px-6 py-2 rounded-full text-sm"
                     onClick={downloadResume}
                   >
-                    <Download className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:-translate-y-0.5" />
-                    <span className="text-white">Download Resume</span>
+                    <Download className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    <span className="text-white">Resume</span>
                   </Button>
                 </div>
               </div>
+
+              {/* Mobile Menu Button - Perfect Bottom Baseline Alignment */}
+              <button
+                onClick={toggleMenu}
+                disabled={isMobileMenuAnimating}
+                className="lg:hidden ml-auto w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50 shrink-0 p-0"
+                aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
+              >
+                <div className={`transition-all duration-300 will-change-transform ${isOpen ? 'rotate-180' : ''}`}>
+                  {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </div>
+              </button>
+            </div>
+
+            {/* Mobile Navigation - Compact and Efficient */}
+            <div id="mobile-menu" className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${isOpen
+                ? 'opacity-100 pointer-events-auto'
+                : 'opacity-0 pointer-events-none'
+              }`}>
+              <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1 pt-[env(safe-area-inset-top)]">
+                <div className="px-3 py-4 space-y-1">
+                  {navItems.map((item, index) => (
+                    <button
+                      key={item.label}
+                      onClick={() => scrollToSection(item.href)}
+                      data-nav-link={item.href}
+                      className="block w-full text-left text-secondary hover:text-foreground py-3 px-4 hover:bg-muted/20 active:bg-muted/30 transition-all duration-200 nav-link rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-[0.98]"
+                      style={{
+                        animationDelay: `${index * 50}ms`,
+                        transform: isOpen ? 'translateX(0)' : 'translateX(-20px)',
+                        opacity: isOpen ? 1 : 0,
+                        transition: `all 200ms ease-out ${index * 30}ms`
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <GradientText className="text-base font-medium">{item.label}</GradientText>
+                        <div className="nav-underline mobile-underline"></div>
+                      </div>
+                    </button>
+                  ))}
+
+                  <div className="flex flex-col gap-3 mt-3 pt-3 border-t border-border/20 mx-4 pb-1">
+                    <div className="flex items-center justify-center">
+                      <ThemeToggle />
+                    </div>
+                    <Button
+                      size="default"
+                      className="gradient-button no-magnetic magnetic-soft w-full py-3 text-base font-semibold rounded-full will-change-transform hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1"
+                      onClick={downloadResume}
+                    >
+                      <Download className="h-4 w-4 mr-2 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                      <span className="text-white">Download Resume</span>
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
     </>
   );
 };

@@ -15,7 +15,7 @@ const HeroSection = () => {
   const [isLandscape, setIsLandscape] = useState(false);
   
   // Mobile-optimized role animations with enhanced responsiveness
-  const roles = ["Data Scientist", "AI/ML Expert", "Content Strategist"];
+  const roles = ["Aspiring Data Scientist", "AI/ML Enthusiast", "Founder @ Mighty-Tech Shorts"];
   const { currentText } = useTypingAnimation(
     roles, 
     isMobile ? 100 : 150, // Even faster on mobile for better engagement
