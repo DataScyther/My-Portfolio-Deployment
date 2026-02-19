@@ -4,7 +4,7 @@ import { Github, Linkedin, Youtube, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     {
       icon: <Linkedin className="h-5 w-5" />,
@@ -52,7 +52,7 @@ const Footer = () => {
           <div className="text-center md:text-left">
             <GradientText className="text-xl sm:text-2xl font-bold mb-4">Nishant Kumar</GradientText>
             <p className="text-secondary mb-4 leading-relaxed text-sm sm:text-base px-2 md:px-0">
-              Future Data Scientist passionate about AI/ML, cloud computing, and creating 
+              Data Scientist & AI Practitioner passionate about Machine Learning, cloud computing, and creating
               educational content to help others learn and grow in technology.
             </p>
             <div className="flex justify-center md:justify-start space-x-4">
@@ -72,7 +72,7 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Quick Links - Enhanced Mobile Grid */}
           <div className="text-center md:text-left">
             <h3 className="font-semibold mb-4 text-base sm:text-lg">Quick Links</h3>
@@ -88,14 +88,14 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           {/* Contact Info - Enhanced Mobile Layout */}
           <div className="text-center md:text-left">
             <h3 className="font-semibold mb-4 text-base sm:text-lg">Get In Touch</h3>
             <div className="space-y-3 text-secondary">
               <div>
                 <div className="font-medium text-sm sm:text-base">Email</div>
-                <a 
+                <a
                   href="mailto:ishantkumaryts@gmail.com"
                   className="hover:text-foreground transition-colors duration-300 text-sm break-all sm:break-normal touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 rounded"
                 >
@@ -104,7 +104,7 @@ const Footer = () => {
               </div>
               <div>
                 <div className="font-medium text-sm sm:text-base">YouTube Channel</div>
-                <a 
+                <a
                   href="https://www.youtube.com/@Mighty-TechShorts"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -122,13 +122,13 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Bottom Section - Enhanced Mobile Layout */}
         <div className="border-t border-border/50 mt-8 pt-6 sm:pt-8 flex flex-col items-center space-y-4 md:flex-row md:justify-between md:space-y-0">
           <div className="text-secondary text-xs sm:text-sm text-center md:text-left">
             © {currentYear} Nishant Kumar. All rights reserved.
           </div>
-          
+
           <div className="flex items-center text-secondary text-xs sm:text-sm">
             <span>Made with</span>
             <Heart className="h-3 w-3 sm:h-4 sm:w-4 mx-1 text-gradient-pink" />

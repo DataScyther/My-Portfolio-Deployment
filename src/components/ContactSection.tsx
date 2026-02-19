@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Linkedin, Github, Youtube, Send, CheckCircle } from "lucide-react";
+import { Mail, Linkedin, Github, Youtube, Send, CheckCircle, Phone } from "lucide-react";
 import { useFormValidation } from "@/hooks/useFormValidation";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -13,12 +13,12 @@ import StatCard from "@/components/StatCard";
 
 const ContactSection = () => {
   const isMobile = useIsMobile();
-  const ref = useScrollReveal({ 
-    threshold: isMobile ? 0.05 : 0.1, 
-    duration: isMobile ? 500 : 700 
+  const ref = useScrollReveal({
+    threshold: isMobile ? 0.05 : 0.1,
+    duration: isMobile ? 500 : 700
   });
   const { formData, errors, isSubmitting, handleChange, handleBlur, handleSubmit } = useFormValidation();
-  
+
   const onSubmit = async () => {
     const success = await handleSubmit();
     if (success) {
@@ -29,8 +29,15 @@ const ContactSection = () => {
       toast.error("Failed to send message. Please try again.");
     }
   };
-  
+
   const contactInfo = [
+    {
+      icon: <Phone className="h-6 w-6" />,
+      label: "Phone",
+      value: "+91 88263 79598",
+      link: "tel:+918826379598",
+      color: "gradient-blue"
+    },
     {
       icon: <Mail className="h-6 w-6" />,
       label: "Email",
@@ -83,18 +90,18 @@ const ContactSection = () => {
             Let's <GradientText>Connect</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
-            Ready to collaborate on exciting data science projects or discuss the latest in AI/ML? 
+            Ready to collaborate on exciting data science projects or discuss the latest in AI/ML?
             I'd love to hear from you!
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Information - Enhanced Mobile Layout */}
           <div className="slide-in-left" style={{ animationDelay: '200ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8">
               Get In <GradientText>Touch</GradientText>
             </h3>
-            
+
             <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
               {contactInfo.map((contact, index) => (
                 <a
@@ -114,7 +121,7 @@ const ContactSection = () => {
                 </a>
               ))}
             </div>
-            
+
             {/* Animated Quick Stats - Mobile Optimized */}
             <Card className="card-glow p-4 sm:p-6 will-change-transform">
               <h4 className="font-semibold mb-4 text-sm sm:text-base">Quick Stats</h4>
@@ -128,7 +135,7 @@ const ContactSection = () => {
                   className="scale-75 sm:scale-90"
                 />
                 <StatCard
-                  number={5}
+                  number={2}
                   suffix="+"
                   label="Internship Programs"
                   color="gradient-pink"
@@ -154,26 +161,25 @@ const ContactSection = () => {
               </div>
             </Card>
           </div>
-          
+
           {/* Contact Form - Enhanced Mobile Experience */}
           <div className="slide-in-right" style={{ animationDelay: '400ms' }}>
             <Card className="card-glow p-6 sm:p-8 will-change-transform">
               <h3 className="text-xl sm:text-2xl font-semibold mb-6">
                 Send Me a <GradientText>Message</GradientText>
               </h3>
-              
+
               <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className="block text-sm font-medium mb-2">Name</label>
-                    <Input 
+                    <Input
                       value={formData.name}
                       onChange={(e) => handleChange('name', e.target.value)}
                       onBlur={() => handleBlur('name')}
-                      placeholder="Your Name" 
-                      className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${
-                        errors.name ? 'border-destructive' : ''
-                      }`}
+                      placeholder="Your Name"
+                      className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${errors.name ? 'border-destructive' : ''
+                        }`}
                     />
                     {errors.name && (
                       <p className="text-destructive text-sm mt-1">{errors.name}</p>
@@ -181,56 +187,53 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">Email</label>
-                    <Input 
+                    <Input
                       type="email"
                       value={formData.email}
                       onChange={(e) => handleChange('email', e.target.value)}
                       onBlur={() => handleBlur('email')}
-                      placeholder="your.email@example.com" 
-                      className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${
-                        errors.email ? 'border-destructive' : ''
-                      }`}
+                      placeholder="your.email@example.com"
+                      className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${errors.email ? 'border-destructive' : ''
+                        }`}
                     />
                     {errors.email && (
                       <p className="text-destructive text-sm mt-1">{errors.email}</p>
                     )}
                   </div>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">Subject</label>
-                  <Input 
+                  <Input
                     value={formData.subject}
                     onChange={(e) => handleChange('subject', e.target.value)}
                     onBlur={() => handleBlur('subject')}
-                    placeholder="What would you like to discuss?" 
-                    className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${
-                      errors.subject ? 'border-destructive' : ''
-                    }`}
+                    placeholder="What would you like to discuss?"
+                    className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 min-h-[48px] touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${errors.subject ? 'border-destructive' : ''
+                      }`}
                   />
                   {errors.subject && (
                     <p className="text-destructive text-sm mt-1">{errors.subject}</p>
                   )}
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">Message</label>
-                  <Textarea 
+                  <Textarea
                     value={formData.message}
                     onChange={(e) => handleChange('message', e.target.value)}
                     onBlur={() => handleBlur('message')}
                     placeholder="Tell me about your project, collaboration ideas, or just say hello!"
                     rows={5}
-                    className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 resize-none touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${
-                      errors.message ? 'border-destructive' : ''
-                    }`}
+                    className={`bg-muted/20 border-border focus:border-accent/50 transition-colors duration-300 resize-none touch-manipulation focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 ${errors.message ? 'border-destructive' : ''
+                      }`}
                   />
                   {errors.message && (
                     <p className="text-destructive text-sm mt-1">{errors.message}</p>
                   )}
                 </div>
-                
-                <Button 
+
+                <Button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full gradient-button text-lg py-6 min-h-[56px] touch-manipulation will-change-transform hover:scale-[1.02] active:scale-[0.98] transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -248,7 +251,7 @@ const ContactSection = () => {
                   )}
                 </Button>
               </form>
-              
+
               <div className="mt-6 text-center text-sm text-secondary">
                 <p>
                   Prefer direct contact? Email me at{" "}
@@ -260,7 +263,7 @@ const ContactSection = () => {
             </Card>
           </div>
         </div>
-        
+
         {/* Call to Action - Enhanced Mobile Layout */}
         <div className="text-center mt-12 sm:mt-16 slide-in-up" style={{ animationDelay: '600ms' }}>
           <Card className="card-glow p-6 sm:p-8 max-w-4xl mx-auto will-change-transform">
@@ -268,7 +271,7 @@ const ContactSection = () => {
               Ready to Build Something <GradientText>Amazing</GradientText>?
             </h3>
             <p className="text-secondary mb-6 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-              Whether you have a data science project in mind, need help with AI/ML implementation, 
+              Whether you have a data science project in mind, need help with AI/ML implementation,
               or want to collaborate on innovative solutions, I'm here to help bring your ideas to life.
             </p>
             <div className="flex flex-col gap-4 justify-center sm:flex-row">

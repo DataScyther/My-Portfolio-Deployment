@@ -104,22 +104,22 @@ const SkillsSection = () => {
     { node: <SiAmazonwebservices size={60} />, title: "AWS", href: "https://aws.amazon.com" },
     { node: <SiGooglecloud size={60} />, title: "GCP", href: "https://cloud.google.com" },
     // Custom SVG for Azure since it's not available in react-icons/si
-    { 
+    {
       node: (
         <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.25 3.25L13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M18.75 13.25L18.75 18.75L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M13.25 18.75L8.75 18.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M8.75 13.25L8.75 8.75L13.25 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M8.75 13.25L13.25 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M13.25 13.25L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M18.75 8.75L18.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M8.75 8.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M13.25 3.25L13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M18.75 13.25L18.75 18.75L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M13.25 18.75L8.75 18.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8.75 13.25L8.75 8.75L13.25 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M13.25 8.75L18.75 8.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8.75 13.25L13.25 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M13.25 13.25L13.25 18.75" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M18.75 8.75L18.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M8.75 8.75L8.75 13.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-      ), 
-      title: "Azure", 
-      href: "https://azure.microsoft.com" 
+      ),
+      title: "Azure",
+      href: "https://azure.microsoft.com"
     },
     { node: <SiDocker size={60} />, title: "Docker", href: "https://docker.com" },
     { node: <SiVercel size={60} />, title: "Vercel", href: "https://vercel.com" },
@@ -133,9 +133,9 @@ const SkillsSection = () => {
     <section id="skills" ref={ref} className="py-16 sm:py-20 px-4 relative overflow-hidden">
       {/* Background pattern overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <img 
-          src="/src/assets/tech-circuit-pattern.svg" 
-          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+        <img
+          src="/src/assets/tech-circuit-pattern.svg"
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10"
           aria-hidden="true"
           alt=""
         />
@@ -143,7 +143,7 @@ const SkillsSection = () => {
         <div className="absolute top-20 right-10 w-80 h-80 rounded-full bg-gradient-blue/10 blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 rounded-full bg-gradient-purple/10 blur-3xl"></div>
       </div>
-      
+
       <div className="max-w-6xl mx-auto relative">
         {/* Section Header - Enhanced Mobile Typography */}
         <div className="text-center mb-12 sm:mb-16 slide-in-up" style={{ animationDelay: '0ms' }}>
@@ -154,20 +154,20 @@ const SkillsSection = () => {
             Expertise in data science, machine learning, and full-stack development
           </p>
         </div>
-        
+
         {/* Skills Grid - Enhanced for Mobile */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {skillCategories.map((category, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="card-glow p-5 sm:p-6 group hover-lift skill-card opacity-0 transform translate-y-4 transition-all duration-700 ease-out will-change-transform hover:scale-[1.02] active:scale-[0.98] relative overflow-hidden"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Card background pattern */}
               <div className="absolute inset-0 pointer-events-none">
-                <img 
-                  src="/src/assets/skill-card-overlay.svg" 
-                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+                <img
+                  src="/src/assets/skill-card-overlay.svg"
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10"
                   aria-hidden="true"
                   alt=""
                 />
@@ -180,7 +180,7 @@ const SkillsSection = () => {
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold leading-tight">{category.title}</h3>
               </div>
-              
+
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <GradientText
@@ -194,13 +194,13 @@ const SkillsSection = () => {
             </Card>
           ))}
         </div>
-        
+
         {/* Proficiency Bars - Enhanced Mobile Layout */}
         <div className="mt-12 sm:mt-16">
           <h3 className="text-xl sm:text-2xl font-semibold text-center mb-8 sm:mb-12">
             Core <GradientText>Proficiencies</GradientText>
           </h3>
-          
+
           <div className="grid gap-6 sm:gap-8 max-w-4xl mx-auto sm:grid-cols-2">
             {[
               { skill: "Python & Data Science", level: 95 },
@@ -214,7 +214,7 @@ const SkillsSection = () => {
                   <span className="text-foreground text-sm font-mono">{item.level}%</span>
                 </div>
                 <div className={styles.progressContainer}>
-                  <div 
+                  <div
                     className={`${styles.progressBar} ${styles[`level-${item.level}`]}`}
                   ></div>
                 </div>

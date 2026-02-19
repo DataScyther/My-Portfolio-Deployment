@@ -15,7 +15,7 @@ const HeroSection = () => {
   const [isLandscape, setIsLandscape] = useState(false);
   
   // Mobile-optimized role animations with enhanced responsiveness
-  const roles = ["Future Data Scientist", "AI/ML Expert", "Cloud Enthusiast"];
+  const roles = ["Data Scientist", "AI/ML Expert", "Content Strategist"];
   const { currentText } = useTypingAnimation(
     roles, 
     isMobile ? 100 : 150, // Even faster on mobile for better engagement
@@ -169,7 +169,7 @@ const HeroSection = () => {
               max-w-4xl mx-auto leading-relaxed px-4 text-foreground mt-1
               will-change-transform transition-opacity duration-300
             ">
-              Generative AI & Cloud (AWS | GCP) | Python • AI/ML • LLMs • MLOps
+              Computer Science (Data Science) Undergraduate | Python • AI/ML • Generative AI • Data Analytics
             </p>
           </div>
           

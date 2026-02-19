@@ -6,66 +6,52 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const ExperienceSection = () => {
   const ref = useScrollReveal({ threshold: 0.1, duration: 700 });
-  
+
   const experiences = [
     {
-      title: "YouTube Content Creator",
-      company: "Mighty-TechShorts",
-      location: "Remote",
+      title: "Founder & Content Strategist",
+      company: "Mighty-Tech Shorts",
+      location: "Greater Delhi Area, India",
       duration: "Sep 2022 – Present",
       type: "Content Creation",
-      description: "Creating educational technology content for 3+ years, helping thousands learn complex concepts through simplified explanations and tutorials.",
+      description: "Scaling a tech-focused media brand to 170,000+ subscribers. Specializing in short-form video SEO, audience retention strategies, and data-driven content creation.",
       achievements: [
-        "3+ years of consistent content creation",
-        "Educational focus on emerging technologies",
-        "Building a community of tech learners",
+        "Scaled media brand to 170k+ subscribers",
+        "Managed 3.5M+ monthly impressions",
+        "Data-driven content strategy & retention optimization",
+        "End-to-end video production & SEO"
       ],
       color: "gradient-purple"
     },
     {
-      title: "Data Science Intern",
-      company: "Boston Consulting Group",
-      location: "Remote",
-      duration: "Mar 2025 – Apr 2025",
-      type: "Simulation",
-      description: "Participated in BCG's data science simulation, working on consulting-grade analytics projects and strategic business solutions.",
+      title: "Emerging Technologies Intern",
+      company: "Microsoft Learning",
+      location: "Greater Delhi Area, India",
+      duration: "Dec 2025 – Jan 2026",
+      type: "Internship",
+      description: "Executed a 4-week intensive technical project focused on Industry 5.0 through the AICTE-facilitated Microsoft Elevate program, collaborating with industry mentors.",
       achievements: [
-        "Strategic data analysis for business consulting",
-        "Advanced analytics and modeling techniques",
-        "Client-focused solution development",
-        "Professional consulting methodology"
+        "Executed Industry 5.0 technical project",
+        "Applied emerging technology concepts",
+        "Collaborated in Microsoft Elevate program",
+        "Technical problem solving & implementation"
       ],
-      color: "gradient-orange"
+      color: "gradient-blue"
     },
     {
-      title: "Data Analytics & Visualization",
-      company: "Accenture",
-      location: "Remote",
-      duration: "Feb 2025 – Mar 2025",
-      type: "Simulation",
-      description: "Focused on advanced data visualization techniques and business intelligence dashboard development using industry-standard tools.",
+      title: "AI Intern",
+      company: "1M1B (1 Million for 1 Billion)",
+      location: "Greater Delhi Area",
+      duration: "Dec 2025 – Jan 2026",
+      type: "Internship",
+      description: "Completed a virtual internship applying Generative AI and LLMs, including IBM Granite models and RAG frameworks, to sustainability-focused solutions.",
       achievements: [
-        "Created comprehensive business dashboards",
-        "Advanced data visualization techniques",
-        "Business intelligence and reporting",
-        "Stakeholder presentation and communication"
+        "Applied Generative AI & RAG frameworks",
+        "Worked with IBM Granite models",
+        "Developed sustainability-focused AI solutions",
+        "Collaborated with IBM & 1M1B professionals"
       ],
-      color: "gradient-purple"
-    },
-    {
-      title: "Data Analyst Simulation",
-      company: "Deloitte",
-      location: "Remote",
-      duration: "Feb 2025 – Mar 2025",
-      type: "Simulation",
-      description: "Participated in Deloitte's virtual data analyst program, gaining exposure to professional consulting practices and analytical methodologies.",
-      achievements: [
-        "Professional data analysis methodologies",
-        "Consulting-grade analytical frameworks",
-        "Business problem-solving approaches",
-        "Industry best practices and standards"
-      ],
-      color: "gradient-pink"
+      color: "gradient-green"
     }
   ];
 
@@ -86,9 +72,9 @@ const ExperienceSection = () => {
     <section id="experience" ref={ref} className="py-20 px-4 relative overflow-hidden">
       {/* Background pattern overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <img 
-          src="/src/assets/data-dots-pattern.svg" 
-          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+        <img
+          src="/src/assets/data-dots-pattern.svg"
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10"
           aria-hidden="true"
           alt=""
         />
@@ -107,20 +93,20 @@ const ExperienceSection = () => {
             Building expertise through diverse experiences in data science, analytics, and technology education
           </p>
         </div>
-        
+
         {/* Experience Timeline */}
         <div className="space-y-8">
           {experiences.map((exp, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="card-glow p-6 slide-in-up hover-lift transition-all duration-700 ease-out relative overflow-hidden"
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
               {/* Card background pattern */}
               <div className="absolute inset-0 pointer-events-none">
-                <img 
-                  src="/src/assets/experience-card-overlay.svg" 
-                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+                <img
+                  src="/src/assets/experience-card-overlay.svg"
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-10"
                   aria-hidden="true"
                   alt=""
                 />
@@ -134,9 +120,9 @@ const ExperienceSection = () => {
                     <Building2 className="h-5 w-5 text-accent mr-2" />
                     <h3 className="text-xl font-semibold">{exp.company}</h3>
                   </div>
-                  
+
                   <GradientText as="h4" className="text-lg font-medium mb-3">{exp.title}</GradientText>
-                  
+
                   <div className="space-y-2 text-sm text-secondary">
                     <div className="flex items-center">
                       <Calendar className="h-4 w-4 mr-2" />
@@ -147,18 +133,18 @@ const ExperienceSection = () => {
                       {exp.location}
                     </div>
                   </div>
-                  
+
                   <Badge className={`mt-3 ${getColorClass(exp.color)}`}>
                     {exp.type}
                   </Badge>
                 </div>
-                
+
                 {/* Experience Details */}
                 <div className="lg:w-2/3">
                   <p className="text-secondary mb-4 leading-relaxed">
                     {exp.description}
                   </p>
-                  
+
                   <div>
                     <h5 className="font-semibold mb-3">Key Achievements:</h5>
                     <div className="grid gap-2">

@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Award, ExternalLink, Brain, Code, Code2, BrainCircuit, Bot, BarChart3, Building2, GraduationCap, PieChart, Plane, CloudCog, AreaChart, LineChart, Sparkles } from "lucide-react";
+import { Award, ExternalLink, Brain, CloudCog, Plane, Building2 } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useEffect } from "react";
 import GradientText from "./GradientText";
@@ -16,155 +16,44 @@ const CertificationsSection = () => {
   });
   const certifications = [
     {
-      title: "Generative AI",
-      issuer: "BCG",
-      date: "2025",
-      category: "Generative AI",
-      icon: <BrainCircuit className="h-6 w-6" />,
-      color: "gradient-green",
-      description: "Generative AI is a type of artificial intelligence that uses machine learning to create new content, such as images, text, and audio.",
-      skills: ["Generative AI", "Machine Learning", "Artificial Intelligence"]
+      title: "Oracle Cloud Infrastructure 2025 Certified Data Science Professional",
+      issuer: "Oracle",
+      date: "Dec 2025",
+      category: "Data Science",
+      icon: <CloudCog className="h-6 w-6" />,
+      color: "gradient-red",
+      description: "Professional certification validating expertise in designing and implementing data science solutions on Oracle Cloud Infrastructure.",
+      skills: ["OCI Data Science", "Machine Learning", "Model Deployment"]
     },
-    
     {
-      title: "Generative AI in Action",
-      issuer: "AWS Training and Certification",
-      date: "2025",
-      category: "Generative AI",
-      icon: <Bot className="h-6 w-6" />,
-      color: "gradient-orange",
-      description: "Hands-on experience with AWS architecture design and cloud solutions implementation",
-      skills: ["AWS Architecture", "Cloud Design", "Solutions Engineering"]
-    },
-  
-    {
-      title: "Data Science & Analytics",
-      issuer: "Future Interns",
-      date: "2025",
-      category: "Data Science & Analytics",
-      icon: <BarChart3 className="h-6 w-6" />,
-      color: "gradient-green",
-      description: "Data science and analytics are the study of data to extract meaningful insights and knowledge.",
-      skills: ["Data Science", "Analytics", "SQL", "Power BI", "Tableau", "Excel"]
-    },
-
-     {
-      title: "Lloyds Banking Group Data Science Simulation",
-      issuer: "Lloyds Banking Group",
-      date: "2025",
-      category: "Financial Analytics",
-      icon: <Building2 className="h-6 w-6" />,
-      color: "gradient-green",
-      description: "Financial data science and risk analytics in banking sector",
-      skills: ["Financial Modeling", "Risk Analysis", "Banking Analytics"]
-    },
-
-    {
-      title: "Microsoft Azure AI Fundamentals",
+      title: "Microsoft Azure AI Essentials Professional Certificate",
       issuer: "Microsoft",
-      date: "2025",
-      category: "Artificial Intelligence",
-      icon: <GraduationCap className="h-6 w-6" />,
-      color: "gradient-blue",
-      description: "Hands-on experience with AWS architecture design and cloud solutions implementation",
-      skills: ["AWS Architecture", "Cloud Design", "Solutions Engineering"]
-    },
-
-    {
-      title: "Microsoft Azure AI Essentials",
-      issuer: "Microsoft",
-      date: "2025",
+      date: "Dec 2025",
       category: "Artificial Intelligence",
       icon: <Brain className="h-6 w-6" />,
       color: "gradient-blue",
-      description: "Comprehensive understanding of Azure AI services and machine learning capabilities",
-      skills: ["Azure AI", "Machine Learning", "Cognitive Services"]
+      description: "Comprehensive professional certificate covering Azure AI fundamentals and generative AI concepts.",
+      skills: ["Azure AI", "Generative AI", "Cloud Computing"]
     },
-
-
-    {
-      title: "Data Analytics",
-      issuer: "Tata Group",
-      date: "2025",
-      category: "Data Analytics",
-      icon: <PieChart className="h-6 w-6" />,
-      color: "gradient-sky",
-      description: "Data analytics is the process of examining data to gain insights and make decisions.",
-      skills: ["Data Analytics", "SQL", "Power BI", "Tableau", "Excel", "Python", "Data Visualization"]
-    },
-
-
     {
       title: "British Airways Data Science Job Simulation",
-      issuer: "British Airways",
-      date: "2025",
-      category: "Data Science",
+      issuer: "Forage",
+      date: "Feb 2025",
+      category: "Data Analytics",
       icon: <Plane className="h-6 w-6" />,
-      color: "gradient-red",
-      description: "Real-world data science project simulation in the aviation industry",
-      skills: ["Data Analysis", "Predictive Modeling", "Business Intelligence"]
-    },
-
-      {
-      title: "AWS Solutions Architect",
-      issuer: "Amazon Web Services",
-      date: "2025",
-      category: "Cloud",
-      icon: <CloudCog className="h-6 w-6" />,
-      color: "gradient-orange",
-      description: "Designing and deploying scalable cloud solutions",
-      skills: ["Cloud Architecture", "AWS", "DevOps"]
-    },
-
-    {
-      title: "Data Analytics and Visualization",
-      issuer: "Accenture",
-      date: "2025",
-      category: "Data Analytics",
-      icon: <AreaChart className="h-6 w-6" />,
-      color: "gradient-purple",
-      description: "Data analytics and visualization using Power BI and Tableau",
-      skills: ["Data Analytics", "Power BI", "Tableau", "Excel", "Python", "Data Visualization"]
+      color: "gradient-sky",
+      description: "Completed a simulation focusing on web scraping to gain insights into customer booking behavior and predictive modeling.",
+      skills: ["Web Scraping", "Predictive Modeling", "Customer Insights"]
     },
     {
-      title: "Data Analytics",
-      issuer: "Deloitte",
-      date: "2025",
-      category: "Data Analytics",
-      icon: <LineChart className="h-6 w-6" />,
+      title: "Lloyds Banking Group Data Science Job Simulation",
+      issuer: "Forage",
+      date: "Feb 2025",
+      category: "Data Science",
+      icon: <Building2 className="h-6 w-6" />,
       color: "gradient-green",
-      description: "Data analytics is the process of examining data to gain insights and make decisions.",
-      skills: ["Data Analytics", "SQL", "Power BI", "Tableau", "Excel", "Python", "Data Visualization"]
-    },
-    {
-      title: "Google Cloud Generative AI Studio",
-      issuer: "Google Cloud",
-      date: "2025",
-      category: "Generative AI",
-      icon: <Sparkles className="h-6 w-6" />,
-      color: "gradient-purple",
-      description: "Advanced training in generative AI technologies and implementation",
-      skills: ["Generative AI", "LLMs", "Google Cloud AI"]
-    },
-    {
-      title: "IBM Python for Data Science",
-      issuer: "IBM",
-      date: "2024",
-      category: "Programming",
-      icon: <Code2 className="h-6 w-6" />,
-      color: "gradient-blue",
-      description: "Comprehensive Python programming for data science applications",
-      skills: ["Python", "Data Science", "Programming"]
-    },
-    {
-      title: "HackerRank Python Programming Certificate",
-      issuer: "HackerRank",
-      date: "2024",
-      category: "Programming",
-      icon: <Code className="h-6 w-6" />,
-      color: "gradient-green",
-      description: "Advanced Python programming skills certification",
-      skills: ["Python", "Algorithms", "Problem Solving"]
+      description: "Worked on predictive modeling simulation to forecast customer churn and improve retention strategies.",
+      skills: ["Churn Prediction", "Random Forest", "Data Visualization"]
     }
   ];
 
@@ -233,11 +122,11 @@ const CertificationsSection = () => {
             Continuous learning and professional development in cutting-edge technologies
           </p>
         </div>
-        
+
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category, index) => (
-            <Badge 
+            <Badge
               key={index}
               variant="outline"
               className="px-4 py-2 bg-background dark:bg-card/80 hover:bg-accent/10 border-border hover:border-accent/30 transition-all duration-300 cursor-pointer"
@@ -246,12 +135,12 @@ const CertificationsSection = () => {
             </Badge>
           ))}
         </div>
-        
+
         {/* Certifications Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="certs-grid">
           {certifications.map((cert, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="card-glow p-6 group cursor-pointer bg-card dark:bg-card/80 border-border cert-card opacity-0 transform translate-y-6 transition-all duration-700 ease-out"
               style={{ animationDelay: `${(index + 2) * 80}ms` }}
             >
@@ -271,7 +160,7 @@ const CertificationsSection = () => {
                   <ExternalLink className="h-4 w-4 text-secondary group-hover:text-accent transition-colors duration-300" />
                 </a>
               </div>
-              
+
               {/* Certificate Info */}
               <div className="mb-4">
                 <Badge className={`mb-2 ${getColorClass(cert.color)}`}>
@@ -287,12 +176,12 @@ const CertificationsSection = () => {
                   <GradientText>{cert.date}</GradientText>
                 </div>
               </div>
-              
+
               {/* Description */}
               <p className="text-secondary text-sm mb-4 leading-relaxed">
                 {cert.description}
               </p>
-              
+
               {/* Skills */}
               <div>
                 <h4 className="font-semibold mb-2 text-xs uppercase tracking-wide">Skills Gained</h4>

@@ -1,4 +1,4 @@
-import { ExternalLink, Github, BarChart3, Brain, Monitor, Music } from 'lucide-react';
+import { ExternalLink, Github, BarChart3, Brain, Monitor, Music, PieChart } from 'lucide-react';
 import GradientText from "@/components/GradientText";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -9,8 +9,40 @@ import { useEffect, useRef } from "react";
 const ProjectsSection = () => {
   const ref = useScrollReveal({ threshold: 0.1, duration: 700 });
   const gridRef = useRef<HTMLDivElement>(null);
-  
+
   const projects = [
+    {
+      title: "Neeva AI",
+      description: "AI-driven mental health platform for proactive emotional maintenance and intelligent crisis intervention. Features real-time emotion analysis and personalized support using Google Gemini.",
+      technologies: ["React 18", "Vite", "TypeScript", "Tailwind CSS", "Supabase", "Google Gemini"],
+      icon: <Brain className="h-8 w-8" />,
+      color: "gradient-purple",
+      category: "AI & Mental Health",
+      url: "https://neeva-ai.vercel.app/",
+      codeUrl: "https://github.com/DataScyther/Neeva-AI",
+      features: [
+        "AI-driven emotion analysis",
+        "Proactive crisis intervention",
+        "Secure user authentication",
+        "Real-time chat support"
+      ]
+    },
+    {
+      title: "Customer Segmentation & Retention",
+      description: "Unsupervised machine learning project to segment customers based on purchasing behavior. Utilizes PCA and agglomerative clustering to identify high-value and at-risk segments for targeted marketing strategies.",
+      technologies: ["Python", "Pandas", "Scikit-learn", "PCA", "Matplotlib", "Seaborn"],
+      icon: <PieChart className="h-8 w-8" />,
+      color: "gradient-pink",
+      category: "Machine Learning",
+      url: "https://github.com/DataScyther/Customer-Segmentation-Retention-Analysis",
+      codeUrl: "https://github.com/DataScyther/Customer-Segmentation-Retention-Analysis",
+      features: [
+        "Unsupervised clustering (K-Means/Agglomerative)",
+        "PCA for dimensionality reduction",
+        "Behavioral customer segmentation",
+        "Strategic marketing recommendations"
+      ]
+    },
     {
       title: "E-commerce Business Sales Dashboard",
       description: "Comprehensive e-commerce analytics dashboard built with Power BI featuring advanced DAX calculations, interactive visualizations, and real-time business insights for data-driven decision making.",
@@ -29,17 +61,17 @@ const ProjectsSection = () => {
     },
     {
       title: "College Event Feedback Analysis",
-      description: "Machine learning-powered sentiment analysis system for college event feedback using Python, NLP techniques, and advanced visualization to extract meaningful insights from student responses.",
-      technologies: ["Python", "Pandas", "Seaborn", "Matplotlib", "NLP", "Scikit-learn"],
+      description: "Machine learning-powered sentiment analysis system using Semantic NLP to transform student feedback into actionable insights. Analyzes text and rating-based feedback to comprehend satisfaction levels and identify areas for improvement.",
+      technologies: ["Python", "Google Colab", "TextBlob", "VADER", "Pandas", "Matplotlib"],
       icon: <Brain className="h-8 w-8" />,
       color: "gradient-pink",
       category: "Machine Learning",
-      url: "https://github.com/DataScyther/College-Event-Feedback-Analysis/blob/main/Screenshot%202025-06-20%20074258.png",
+      url: "https://github.com/DataScyther/College-Event-Feedback-Analysis",
       codeUrl: "https://github.com/DataScyther/College-Event-Feedback-Analysis",
       features: [
-        "Sentiment analysis algorithms",
-        "Statistical data analysis",
-        "Interactive visualizations",
+        "Semantic NLP analysis",
+        "Sentiment scoring (VADER/TextBlob)",
+        "Insight generation",
         "Automated reporting"
       ]
     },
@@ -61,34 +93,34 @@ const ProjectsSection = () => {
     },
     {
       title: "Matrix-Themed UPI Payment System",
-      description: "Futuristic UPI payment interface inspired by The Matrix with immersive 3D effects, particle systems, and cyberpunk aesthetics using modern web technologies.",
-      technologies: ["HTML5", "CSS3", "JavaScript", "Three.js", "WebGL", "Animation"],
+      description: "Futuristic UPI payment interface inspired by The Matrix featuring voice-assisted generation, real-time validation, and an AR preview. Implements immersive 3D effects and particle systems.",
+      technologies: ["HTML5", "CSS3", "JavaScript", "Three.js", "WebGL", "AR Preview"],
       icon: <Monitor className="h-8 w-8" />,
       color: "gradient-purple",
       category: "Web Development",
       url: "https://github.com/DataScyther/Matrix-Themed-UPI-Payment-System",
-      codeUrl: "https://github.com/DataScyther/Matrix-Themed-UPI-Payment-System/blob/main/Matrix%20UPI.html",
+      codeUrl: "https://github.com/DataScyther/Matrix-Themed-UPI-Payment-System",
       features: [
-        "3D matrix effects",
-        "Particle animations",
-        "Cyberpunk UI design",
-        "Interactive payment flow"
+        "Voice-assisted payment",
+        "Real-time validation",
+        "AR transaction preview",
+        "Interactive 3D matrix effects"
       ]
     },
     {
-      title: "4D Audio Visualizer with Ripple Effects",
-      description: "Interactive 4D audio-visual experience featuring dynamic musical spheres with ripple effects, real-time audio analysis, and immersive 3D graphics using Web Audio API.",
-      technologies: ["JavaScript", "Web Audio API", "Three.js", "HTML5 Canvas", "WebGL"],
+      title: "Audio Visualizer with Ripple Effects",
+      description: "Immersive audio-visual experience where 4D musical spheres generate ripple effects. Features interactive controls for gravity, spawn rate, and sound scale.",
+      technologies: ["JavaScript", "Web Audio API", "HTML5 Canvas", "Interactive 4D"],
       icon: <Music className="h-8 w-8" />,
       color: "gradient-pink",
       category: "Creative Technology",
-      url: "https://github.com/DataScyther/-4D-Musical-Spheres-with-Ripple-Effects",
-      codeUrl: "https://github.com/DataScyther/-4D-Musical-Spheres-with-Ripple-Effects/blob/main/4D.html",
+      url: "https://github.com/DataScyther/Audio-Visualizer-with-Ripple-Effects",
+      codeUrl: "https://github.com/DataScyther/Audio-Visualizer-with-Ripple-Effects",
       features: [
         "Real-time audio analysis",
-        "4D visual effects",
-        "Interactive sound spheres",
-        "Dynamic ripple animations"
+        "Interactive 4D controls",
+        "Dynamic ripple generation",
+        "Physics-based particle system"
       ]
     }
   ];
@@ -110,7 +142,7 @@ const ProjectsSection = () => {
   useEffect(() => {
     const cards = gridRef.current?.querySelectorAll('.project-card');
     if (!cards) return;
-    
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -140,9 +172,9 @@ const ProjectsSection = () => {
     <section id="projects" ref={ref} className="py-20 px-4 relative overflow-hidden">
       {/* Background pattern overlay */}
       <div className="absolute inset-0 pointer-events-none">
-        <img 
-          src="/src/assets/code-grid-pattern.svg" 
-          className="w-full h-full object-cover text-primary dark:text-primary opacity-10" 
+        <img
+          src="/src/assets/code-grid-pattern.svg"
+          className="w-full h-full object-cover text-primary dark:text-primary opacity-10"
           aria-hidden="true"
           alt=""
         />
@@ -162,21 +194,21 @@ const ProjectsSection = () => {
             A showcase of innovative solutions spanning data science, machine learning, and creative technology
           </p>
         </div>
-        
+
         {/* Projects Grid */}
         <div className="grid lg:grid-cols-2 gap-8" ref={gridRef} id="projects-grid">
           {projects.map((project, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="card-glow p-6 group cursor-pointer project-card opacity-0 transform translate-y-8 transition-all duration-700 ease-out relative overflow-hidden"
               style={{ transitionDelay: `${index * 150}ms` }}
               onClick={() => window.open(project.url, "_blank", "noopener,noreferrer")}
             >
               {/* Card background pattern */}
               <div className="absolute inset-0 pointer-events-none">
-                <img 
-                  src="/src/assets/project-card-overlay.svg" 
-                  className="w-full h-full object-cover text-primary dark:text-primary opacity-15" 
+                <img
+                  src="/src/assets/project-card-overlay.svg"
+                  className="w-full h-full object-cover text-primary dark:text-primary opacity-15"
                   aria-hidden="true"
                   alt=""
                 />
@@ -197,12 +229,12 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Project Description */}
               <p className="text-secondary mb-4 leading-relaxed">
                 {project.description}
               </p>
-              
+
               {/* Key Features */}
               <div className="mb-4">
                 <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide">Key Features</h4>
@@ -215,7 +247,7 @@ const ProjectsSection = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Technologies */}
               <div className="mb-6">
                 <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide">Technologies</h4>
@@ -230,7 +262,7 @@ const ProjectsSection = () => {
                   ))}
                 </div>
               </div>
-              
+
               {/* Action Buttons */}
               <div className="flex gap-3">
                 <Button asChild size="sm" className="gradient-button flex-1">
@@ -249,7 +281,7 @@ const ProjectsSection = () => {
             </Card>
           ))}
         </div>
-        
+
         {/* View All Projects Button */}
         <div className="text-center mt-12">
           <Button asChild size="lg" variant="outline" className="border-accent/20 hover:border-accent/40 px-8">

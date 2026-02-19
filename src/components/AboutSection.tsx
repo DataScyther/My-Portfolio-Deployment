@@ -6,28 +6,28 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
-  const ref = useScrollReveal({ 
-    threshold: isMobile ? 0.1 : 0.15, 
-    duration: isMobile ? 500 : 600 
+  const ref = useScrollReveal({
+    threshold: isMobile ? 0.1 : 0.15,
+    duration: isMobile ? 500 : 600
   });
-  
+
   const timeline = [
     {
-      year: "2020",
-      title: "YouTube Content Creator",
-      description: "Started Mighty-TechShorts channel focusing on technology education",
+      year: "2022",
+      title: "Founder & Content Strategist",
+      description: "Founded Mighty-Tech Shorts, scaling to 170k+ subscribers with data-driven content strategies",
       icon: <TrendingUp className="h-5 w-5" />
     },
     {
       year: "2023",
-      title: "B.Tech Computer Science",
-      description: "Specialized in Data Science with focus on AI/ML technologies",
+      title: "B.Tech Computer Science (Data Science)",
+      description: "Started undergraduate degree with focus on AI/ML technologies",
       icon: <GraduationCap className="h-5 w-5" />
     },
     {
-      year: "2023",
-      title: "Data Science & AI/ML Specialization",
-      description: "Deep dive into Generative AI, LLMs, and MLOps",
+      year: "2025",
+      title: "Internships & Specialization",
+      description: "Completed internships at Microsoft Learning and 1M1B, applying GenAI & LLMs",
       icon: <Target className="h-5 w-5" />
     }
   ];
@@ -41,10 +41,10 @@ const AboutSection = () => {
             About <GradientText>Me</GradientText>
           </h2>
           <p className="text-lg sm:text-xl text-secondary max-w-3xl mx-auto leading-relaxed px-2">
-            Passionate about transforming data into innovation and creating content that educates the tech community
+            Transforming data into innovation and creating content that educates the tech community
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* About Content - Enhanced Mobile Layout */}
           <div className="slide-in-left" style={{ animationDelay: '200ms' }}>
@@ -53,7 +53,7 @@ const AboutSection = () => {
                 <User className="h-6 w-6 text-gradient-purple mr-3 flex-shrink-0" />
                 <h3 className="text-xl sm:text-2xl font-semibold">My Journey</h3>
               </div>
-              
+
               <div className="space-y-4 text-secondary leading-relaxed">
                 <p className="text-sm sm:text-base">
                   I'm a passionate data science enthusiast currently pursuing my B.Tech in Computer Science 
@@ -61,14 +61,14 @@ const AboutSection = () => {
                   curiosity and has evolved into a deep commitment to leveraging AI and machine learning 
                   for real-world solutions.
                 </p>
-                
+
                 <p className="text-sm sm:text-base">
                   For the past 3+ years, I've been sharing my knowledge through my YouTube channel 
                   <GradientText className="font-semibold"> Mighty-TechShorts</GradientText>, where I create
                   educational content about emerging technologies, helping thousands of learners understand 
                   complex concepts in simple terms.
                 </p>
-                
+
                 <p className="text-sm sm:text-base">
                   My expertise lies in data science, machine learning, and AI/ML technologies. I have a keen 
                   interest in generative AI, large language models (LLMs), and MLOps, and I'm always eager to 
@@ -77,20 +77,20 @@ const AboutSection = () => {
               </div>
             </Card>
           </div>
-          
+
           {/* Timeline - Enhanced Mobile Experience */}
           <div className="slide-in-right" style={{ animationDelay: '400ms' }}>
             <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 text-center lg:text-left">
               Career & Education <GradientText>Timeline</GradientText>
             </h3>
-            
+
             <div className="space-y-6">
               {timeline.map((item, index) => (
                 <div key={index} className="flex items-start gap-4 will-change-transform hover:scale-[1.02] transition-transform duration-300">
                   <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-r from-gradient-purple to-gradient-pink flex items-center justify-center shadow-lg">
                     {item.icon}
                   </div>
-                  
+
                   <div className="flex-grow min-w-0">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
                       <GradientText className="text-xs sm:text-sm font-mono px-3 py-1 rounded-full bg-muted/50 text-gradient-purple w-fit">
