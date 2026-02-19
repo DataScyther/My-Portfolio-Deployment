@@ -197,19 +197,19 @@ const Navigation = () => {
       <div className="fixed top-1 sm:top-2 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-3 sm:px-4 pt-[max(env(safe-area-inset-top),0.25rem)]">
         <nav
           ref={navRef}
-          className={`relative rounded-full transition-all duration-200 ${scrolled
-              ? 'bg-background/30 dark:bg-background/30 backdrop-blur-lg border border-border/20 shadow-xl'
-              : 'bg-background/20 dark:bg-background/20 backdrop-blur-md border border-border/10'
+          className={`relative rounded-full transition-all duration-300 ${scrolled
+              ? 'bg-background/40 dark:bg-background/40 backdrop-blur-xl border border-white/10 shadow-2xl supports-[backdrop-filter]:bg-background/20'
+              : 'bg-transparent backdrop-blur-none border-transparent'
             }`}
           role="navigation"
         >
           <div className="max-w-7xl mx-auto px-3 sm:px-6">
-            <div className="relative flex items-center justify-between h-12 sm:h-12 md:h-16">
-              {/* Logo - Perfect Bottom Baseline Alignment */}
+            <div className="relative flex items-center justify-between h-14 sm:h-12 md:h-16">
+              {/* Logo - Premium Positioning */}
               <GradientText
                 as="a"
                 href="#"
-                className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-800 touch-manipulation pl-1 sm:pl-2 inline-flex items-center h-full leading-none tracking-tight -translate-y-[0.5px]"
+                className="text-2xl sm:text-2xl md:text-3xl font-bold hover:scale-105 transition-transform duration-500 touch-manipulation pl-1 inline-flex items-center h-full leading-none tracking-tight"
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 NK
@@ -256,16 +256,19 @@ const Navigation = () => {
                 </div>
               </div>
 
-              {/* Mobile Menu Button - Perfect Bottom Baseline Alignment */}
+              {/* Mobile Menu Button - Enhanced Touch Target & Visuals */}
               <button
                 onClick={toggleMenu}
                 disabled={isMobileMenuAnimating}
-                className="lg:hidden ml-auto w-11 h-11 rounded-full bg-muted/30 hover:bg-muted/50 active:bg-muted/70 flex items-center justify-center transition-all duration-300 touch-manipulation backdrop-blur-sm will-change-transform focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:ring-offset-1 active:scale-95 disabled:opacity-50 shrink-0 p-0"
+                className={`lg:hidden ml-auto w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 backdrop-blur-md border ${isOpen
+                    ? 'bg-primary/20 border-primary/50 text-primary shadow-[0_0_15px_rgba(var(--primary),0.3)]'
+                    : 'bg-background/40 border-white/10 hover:bg-white/10 active:scale-95'
+                  }`}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isOpen}
                 aria-controls="mobile-menu"
               >
-                <div className={`transition-all duration-300 will-change-transform ${isOpen ? 'rotate-180' : ''}`}>
+                <div className={`transition-transform duration-300 ${isOpen ? 'rotate-90 scale-110' : ''}`}>
                   {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                 </div>
               </button>
@@ -273,8 +276,8 @@ const Navigation = () => {
 
             {/* Mobile Navigation - Compact and Efficient */}
             <div id="mobile-menu" className={`lg:hidden mobile-menu-container transition-all duration-300 ease-out will-change-transform ${isOpen
-                ? 'opacity-100 pointer-events-auto'
-                : 'opacity-0 pointer-events-none'
+              ? 'opacity-100 pointer-events-auto'
+              : 'opacity-0 pointer-events-none'
               }`}>
               <div className="absolute top-full left-0 right-0 bg-background/95 dark:bg-background/95 backdrop-blur-xl rounded-xl border border-border/20 shadow-2xl overflow-hidden mt-1 pt-[env(safe-area-inset-top)]">
                 <div className="px-3 py-4 space-y-1">
