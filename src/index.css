@@ -144,7 +144,7 @@ All colors MUST be HSL.
   }
 
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; - Removed for Lenis smooth scrolling compatibility */
     /* Enable smooth scrolling for touch devices */
     -webkit-overflow-scrolling: touch;
   }
@@ -1406,7 +1406,7 @@ All colors MUST be HSL.
   
   /* Pro motion scroll behavior */
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; - Removed for Lenis smooth scrolling compatibility */
     -webkit-overflow-scrolling: touch;
   }
   

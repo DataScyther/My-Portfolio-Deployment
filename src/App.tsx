@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ReactLenis } from 'lenis/react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -51,24 +52,26 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="light"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <TooltipProvider>
-          <GlobalEffects />
-          <Toaster />
-          <Sonner />
-          <RouterProvider 
-            router={router}
-            future={{
-              v7_startTransition: true,
-            }}
-          />
-        </TooltipProvider>
-      </ThemeProvider>
+      <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <TooltipProvider>
+            <GlobalEffects />
+            <Toaster />
+            <Sonner />
+            <RouterProvider 
+              router={router}
+              future={{
+                v7_startTransition: true,
+              }}
+            />
+          </TooltipProvider>
+        </ThemeProvider>
+      </ReactLenis>
     </QueryClientProvider>
   );
 };
